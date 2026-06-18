@@ -251,7 +251,7 @@ const PRESIDENTS = [
     note:"Apertura económica y nueva Constitución (1991)." },
 
   { id:"samper", name:"Ernesto Samper", party:"Partido Liberal", start:"1994-08-07", end:"1998-08-07",
-    economy:{ gdpGrowth:2.81, inflation:19.71, fiscalDeficit:null, debtEnd:5.40 },
+    economy:{ gdpGrowth:2.81, inflation:19.71, fiscalDeficit:{ value:3.78, flag:true, note:"Del prototipo anterior (fuente citada: MinHacienda/Balance GNC + carga manual). No verificado mediante consulta directa en esta sesión — tratar como estimación orientativa." }, debtEnd:5.40 },
     employment:{ unemployment:11.92, informality:null },
     social:{ povertyStart:null, povertyEnd:null, extremeStart:16.0, extremeEnd:28.2, gini:0.568, mpiEnd:null },
     security:{ homicideAvg:62.49, homicideEnd:61.09 },
@@ -259,7 +259,7 @@ const PRESIDENTS = [
     note:"Crisis de legitimidad (Proceso 8000) y deterioro fiscal hacia el final del mandato." },
 
   { id:"pastrana", name:"Andrés Pastrana", party:"Gran Alianza por el Cambio", start:"1998-08-07", end:"2002-08-07",
-    economy:{ gdpGrowth:0.73, inflation:8.6, fiscalDeficit:null, debtEnd:52.54 },
+    economy:{ gdpGrowth:0.73, inflation:8.6, fiscalDeficit:{ value:5.8, flag:true, note:"Del prototipo anterior (fuente citada: MinHacienda/Balance GNC + carga manual). No verificado mediante consulta directa en esta sesión — tratar como estimación orientativa." }, debtEnd:52.54 },
     employment:{ unemployment:17.53, informality:null },
     social:{ povertyStart:null, povertyEnd:null, extremeStart:28.2, extremeEnd:21.2, gini:0.5755, mpiEnd:null },
     security:{ homicideAvg:67.93, homicideEnd:70.40 },
@@ -267,7 +267,7 @@ const PRESIDENTS = [
     note:"Recesión de 1999, acuerdo con el FMI, ruptura del proceso de paz con las FARC." },
 
   { id:"uribe1", name:"Álvaro Uribe", party:"Independiente / Primero Colombia", start:"2002-08-07", end:"2006-08-07", termNumber:1,
-    economy:{ gdpGrowth:5.2, inflation:5.59, fiscalDeficit:null, debtEnd:65.25 },
+    economy:{ gdpGrowth:5.2, inflation:5.59, fiscalDeficit:{ value:4.48, flag:true, note:"Del prototipo anterior (fuente citada: MinHacienda/Balance GNC + carga manual). No verificado mediante consulta directa en esta sesión — tratar como estimación orientativa." }, debtEnd:65.25 },
     employment:{ unemployment:12.27, informality:null },
     social:{ povertyStart:null, povertyEnd:null, extremeStart:21.2, extremeEnd:16.8, gini:0.5417, mpiEnd:null },
     security:{ homicideAvg:47.51, homicideEnd:40.94 },
@@ -275,7 +275,7 @@ const PRESIDENTS = [
     note:"Desmovilización de las AUC; comienza el auge de precios de materias primas." },
 
   { id:"uribe2", name:"Álvaro Uribe", party:"Independiente / Primero Colombia", start:"2006-08-07", end:"2010-08-07", termNumber:2,
-    economy:{ gdpGrowth:3.91, inflation:4.75, fiscalDeficit:null, debtEnd:72.45 },
+    economy:{ gdpGrowth:3.91, inflation:4.75, fiscalDeficit:{ value:3.48, flag:true, note:"Del prototipo anterior (fuente citada: MinHacienda/Balance GNC + carga manual). No verificado mediante consulta directa en esta sesión — tratar como estimación orientativa." }, debtEnd:72.45 },
     employment:{ unemployment:11.42, informality:null },
     social:{ povertyStart:null, povertyEnd:41.0, extremeStart:16.8, extremeEnd:13.3, gini:0.545, mpiEnd:29.7 },
     security:{ homicideAvg:36.73, homicideEnd:34.52 },
@@ -284,7 +284,7 @@ const PRESIDENTS = [
     povertyEndNote:"primer año con cifra nacional comparable en la serie (2012), no el año real de fin de mandato (2010)." },
 
   { id:"santos1", name:"Juan Manuel Santos", party:"Partido de la U", start:"2010-08-07", end:"2014-08-07", termNumber:1,
-    economy:{ gdpGrowth:5.12, inflation:2.88, fiscalDeficit:null, debtEnd:47.98 },
+    economy:{ gdpGrowth:5.12, inflation:2.88, fiscalDeficit:{ value:2.48, flag:true, note:"Del prototipo anterior (fuente citada: MinHacienda/Balance GNC + carga manual). No verificado mediante consulta directa en esta sesión — tratar como estimación orientativa." }, debtEnd:47.98 },
     employment:{ unemployment:9.57, informality:null },
     social:{ povertyStart:41.0, povertyEnd:37.0, extremeStart:13.3, extremeEnd:10.9, gini:0.535, mpiEnd:21.6 },
     security:{ homicideAvg:33.42, homicideEnd:28.65 },
@@ -292,7 +292,7 @@ const PRESIDENTS = [
     note:"Auge minero-energético y regla fiscal (2011); inician negociaciones de paz en La Habana." },
 
   { id:"santos2", name:"Juan Manuel Santos", party:"Partido de la U", start:"2014-08-07", end:"2018-08-07", termNumber:2,
-    economy:{ gdpGrowth:2.24, inflation:5.01, fiscalDeficit:null, debtEnd:71.65 },
+    economy:{ gdpGrowth:2.24, inflation:5.01, fiscalDeficit:{ value:3.45, flag:true, note:"Del prototipo anterior (fuente citada: MinHacienda/Balance GNC + carga manual). No verificado mediante consulta directa en esta sesión — tratar como estimación orientativa." }, debtEnd:71.65 },
     employment:{ unemployment:8.98, informality:null },
     social:{ povertyStart:37.0, povertyEnd:35.5, extremeStart:10.9, extremeEnd:9.8, gini:0.5155, mpiEnd:19.1 },
     security:{ homicideAvg:25.68, homicideEnd:23.82 },
@@ -300,7 +300,7 @@ const PRESIDENTS = [
     note:"Caída de precios del petróleo (2014-16); firma del acuerdo de paz con las FARC (2016)." },
 
   { id:"duque", name:"Iván Duque", party:"Centro Democrático", start:"2018-08-07", end:"2022-08-07",
-    economy:{ gdpGrowth:3.53, inflation:4.93, fiscalDeficit:null, debtEnd:70.26 },
+    economy:{ gdpGrowth:3.53, inflation:4.93, fiscalDeficit:{ value:5.65, flag:true, note:"Del prototipo anterior (fuente citada: MinHacienda/Balance GNC + carga manual). No verificado mediante consulta directa en esta sesión — tratar como estimación orientativa." }, debtEnd:70.26 },
     employment:{ unemployment:12.68, informality:{ value:58.7, partial:true } },
     social:{ povertyStart:35.5, povertyEnd:36.6, extremeStart:9.8, extremeEnd:9.3, gini:0.542, mpiEnd:12.9 },
     security:{ homicideAvg:24.14, homicideEnd:24.95 },
@@ -616,7 +616,7 @@ function renderTab(tabId){
   if(tabId==='economy'){
     renderSingleChart(grid, {title:'Crecimiento del PIB, promedio anual', unit:'% anual, precios constantes', source:'Fuente: Banco Mundial API (NY.GDP.MKTP.KD.ZG), fetch_colombia_kpis.py, 2026-06-18', key:'economy.gdpGrowth', suffix:'%', decimals:1});
     renderSingleChart(grid, {title:'Inflación, promedio anual', unit:'% anual, IPC', source:'Fuente: Banco Mundial API (FP.CPI.TOTL.ZG), fetch_colombia_kpis.py — agregado regional sin cobertura', key:'economy.inflation', suffix:'%', decimals:1});
-    renderSingleChart(grid, {title:'Déficit fiscal, promedio', unit:'% del PIB, Gobierno Central', source:'Banco Mundial API (GC.BAL.CASH.GD.ZS): sin cobertura para Colombia. *** Petro: promedio 2023–2025 a partir de cifras anuales del Ministerio de Hacienda (ver tooltip) — no es un dato del Banco Mundial.', key:'economy.fiscalDeficit', suffix:'%', decimals:1, flag:true});
+    renderSingleChart(grid, {title:'Déficit fiscal, promedio', unit:'% del PIB, Gobierno Central', source:'Banco Mundial API (GC.BAL.CASH.GD.ZS): sin cobertura para Colombia. *** Petro: promedio 2023–2025 verificado en MinHacienda (ver tooltip). Gaviria: s/d. Demás periodos: del prototipo anterior (MinHacienda/carga manual, no verificados en esta sesión) — ver tooltips.', key:'economy.fiscalDeficit', suffix:'%', decimals:1, flag:true});
     renderSingleChart(grid, {title:'Deuda pública bruta, fin de periodo', unit:'% del PIB', source:'Fuente: Banco Mundial API (GC.DOD.TOTL.GD.ZS) — algunos años usan el dato disponible más cercano, no el año exacto de fin de mandato', key:'economy.debtEnd', suffix:'%', decimals:0});
   }
   if(tabId==='employment'){
