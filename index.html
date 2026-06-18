@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colombia en Cifras — KPIs por Gobierno (1990–2026)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFEEE6;
+    --paper-raised:#F7F6F0;
+    --ink:#23281F;
+    --ink-soft:#5A5C50;
+    --navy:#1B3A5C;
+    --ochre:#B6772E;
+    --rule:#CBC4AE;
+    --alert:#8C3B2E;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--navy);}
+  :focus-visible{outline:2px solid var(--navy); outline-offset:2px;}
+
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+
+  header.top{ border-bottom:1px solid var(--rule); padding:40px 0 28px; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--ochre); margin:0 0 10px;
+  }
+  h1{
+    font-family:'Source Serif 4', serif; font-weight:700;
+    font-size:clamp(28px, 4vw, 44px); line-height:1.08; margin:0 0 12px; letter-spacing:-.01em;
+  }
+  .lede{ font-size:15.5px; color:var(--ink-soft); max-width:680px; margin:0; }
+
+  /* Ribbon */
+  section.ribbon-wrap{ padding:28px 0 8px; border-bottom:1px solid var(--rule); }
+  .ribbon-label{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--ink-soft); display:flex; justify-content:space-between; margin-bottom:8px;
+  }
+  .ribbon{ display:flex; width:100%; height:54px; border:1px solid var(--ink); overflow:hidden; position:relative; }
+  .term{
+    position:relative; height:100%; border-right:1px solid var(--paper); cursor:pointer;
+    transition:opacity .15s ease, transform .15s ease; opacity:0; animation:riseIn .5s ease forwards;
+  }
+  .term:last-child{border-right:none;}
+  .term[data-active="false"]{opacity:.28 !important;}
+  .term:hover{transform:translateY(-2px);}
+  .term .fill{position:absolute; inset:0;}
+  .term .label{
+    position:relative; z-index:2; height:100%; display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--paper); font-weight:500;
+    padding:0 3px; text-align:center; white-space:nowrap; overflow:hidden;
+  }
+  @keyframes riseIn{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+  @media (prefers-reduced-motion: reduce){ .term{animation:none; opacity:1;} .term:hover{transform:none;} }
+  .ribbon-hint{ font-size:12px; color:var(--ink-soft); margin:8px 0 24px; }
+  .ribbon-actions{ display:flex; gap:14px; font-family:'IBM Plex Mono', monospace; font-size:11px; }
+  .ribbon-actions button{
+    background:none; border:none; color:var(--navy); cursor:pointer; padding:0;
+    text-decoration:underline; font-family:inherit; font-size:inherit;
+  }
+
+  /* Tabs */
+  nav.tabs{ display:flex; gap:2px; margin:28px 0 0; border-bottom:1px solid var(--rule); }
+  nav.tabs button{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:.04em; text-transform:uppercase;
+    background:none; border:none; padding:12px 18px; cursor:pointer; color:var(--ink-soft);
+    border-bottom:2px solid transparent; margin-bottom:-1px;
+  }
+  nav.tabs button[aria-selected="true"]{ color:var(--ink); border-bottom:2px solid var(--ochre); font-weight:600; }
+
+  /* Chart grid */
+  main{padding:28px 0 8px;}
+  .cat-intro{ font-size:13.5px; color:var(--ink-soft); max-width:760px; margin:0 0 22px; }
+  .grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:18px; }
+  @media (max-width:720px){ .grid{grid-template-columns:1fr;} }
+  .card{ background:var(--paper-raised); border:1px solid var(--rule); border-radius:var(--radius); padding:18px 18px 14px; }
+  .card h3{ font-family:'IBM Plex Sans', sans-serif; font-size:14px; font-weight:600; margin:0 0 2px; }
+  .card .unit{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-soft); margin:0 0 10px; display:block; }
+  .card .legend{ display:flex; gap:14px; font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--ink-soft); margin-bottom:10px; flex-wrap:wrap; }
+  .card .legend span{ display:inline-flex; align-items:center; gap:5px; }
+  .card .legend i{ width:9px; height:9px; display:inline-block; border-radius:1px; }
+  .card .src{ font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--ink-soft); margin-top:12px; padding-top:8px; border-top:1px dashed var(--rule); }
+
+  /* CSS bar chart */
+  .bars-wrap{ width:100%; }
+  .plot{ display:flex; align-items:flex-end; height:170px; gap:6px; border-bottom:1px solid var(--ink); position:relative; }
+  .col{ flex:1; height:100%; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; min-width:0; position:relative; }
+  .col .val{ font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--ink); margin-bottom:5px; white-space:nowrap; }
+  .col .val.muted{ color:var(--ink-soft); font-style:italic; }
+  .bar{ width:60%; border-radius:2px 2px 0 0; height:0; transition:height .6s ease; }
+  .bar.dashed{ width:60%; border:1px dashed var(--rule); border-bottom:none; background:transparent; }
+  .subcols{ display:flex; gap:3px; width:100%; height:100%; align-items:flex-end; justify-content:center; }
+  .subcol{ flex:1; max-width:20px; height:100%; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; position:relative; }
+  .subcol .bar{ width:100%; }
+  .xlabels{ display:flex; gap:6px; margin-top:8px; }
+  .xlabel{ flex:1; text-align:center; font-family:'IBM Plex Mono', monospace; font-size:9.5px; color:var(--ink-soft); line-height:1.35; min-width:0; }
+  .xlabel b{ display:block; color:var(--ink); font-weight:600; font-size:10px; }
+  .region-tick{ position:absolute; left:6%; right:6%; height:0; border-top:2px dashed var(--alert); z-index:2; pointer-events:none; }
+  .legend i.swatch-dash{ width:14px; height:0; border-top:2px dashed var(--alert); background:none; border-radius:0; align-self:center; }
+  @media (prefers-reduced-motion: reduce){ .bar{transition:none;} }
+
+  /* Methodology / sources */
+  section.notes{ margin-top:48px; padding:24px 0 6px; border-top:1px solid var(--rule); }
+  section.notes h2{ font-family:'Source Serif 4', serif; font-size:20px; margin:0 0 14px; }
+  .notes-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:32px; }
+  @media (max-width:760px){ .notes-grid{grid-template-columns:1fr;} }
+  section.notes p{font-size:13.5px; color:var(--ink-soft); margin:0 0 12px;}
+  section.notes ul{margin:0; padding-left:18px; font-size:13.5px; color:var(--ink-soft);}
+  section.notes li{margin-bottom:6px;}
+  .caveat{ background:rgba(140,59,46,.07); border-left:3px solid var(--alert); padding:12px 14px; font-size:13px; color:var(--ink); }
+
+  footer{
+    margin:40px 0 60px; padding-top:18px; border-top:1px solid var(--rule);
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-soft);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="top">
+    <p class="eyebrow">Panel comparativo · 1990–2026</p>
+    <h1>Colombia en cifras, gobierno por gobierno</h1>
+    <p class="lede">Nueve periodos de cuatro años cada uno (los dos mandatos de Uribe y de Santos se muestran por separado, para que la comparación no favorezca a quien gobernó el doble de tiempo). La línea punteada roja en cada barra es el promedio de América Latina y el Caribe para ese mismo periodo de cuatro años — no un promedio regional genérico. Vea las notas metodológicas antes de citar cualquier cifra: varias provienen de estimaciones propias, no de una consulta automatizada a DANE.</p>
+  </header>
+
+  <section class="ribbon-wrap">
+    <div class="ribbon-label">
+      <span>Seleccione los periodos a comparar</span>
+      <span id="rangeLabel">1990 — 2026</span>
+    </div>
+    <div class="ribbon" id="ribbon"></div>
+    <div class="ribbon-hint" id="ribbonHint">Haga clic en un periodo para incluirlo o excluirlo de los gráficos.</div>
+    <div class="ribbon-actions">
+      <button id="selectAll">Seleccionar todos</button>
+      <button id="selectNone">Ninguno</button>
+    </div>
+  </section>
+
+  <nav class="tabs" id="tabs" role="tablist"></nav>
+
+  <main>
+    <p class="cat-intro" id="catIntro"></p>
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <section class="notes">
+    <h2>Fuentes, metodología y procedencia de los datos</h2>
+    <div class="notes-grid">
+      <div>
+        <p><strong>De dónde salen realmente estos números.</strong> Las etiquetas "Fuente: DANE / Banco Mundial..." en cada gráfico indican qué institución publica ese tipo de cifra — es decir, dónde verificarla y de dónde se obtuvo. No existe ningún script que haya generado estos números automáticamente — el único script real es <code>fetch_colombia_kpis.py</code>, que sí consulta una API pública real (Banco Mundial) y que se entrega junto con este archivo precisamente para que estas cifras puedan verificarse o sustituirse.</p>
+        <ul>
+          <li><strong>Calendario:</strong> los periodos corren de agosto a agosto; las series oficiales se publican por año calendario. Los promedios usan los años calendario completos dentro de cada periodo (p. ej., para un periodo 2002–2006, se promedian 2003–2006).</li>
+          <li><strong>Rupturas metodológicas:</strong> la pobreza monetaria y extrema solo es comparable de forma homologada desde el empalme MESEP (2002 en adelante); por eso esas cifras están vacías para Gaviria, Samper y Pastrana.</li>
+          <li><strong>Línea de referencia regional, por periodo:</strong> cada barra incluye un marcador para el promedio de América Latina y el Caribe en ESE MISMO periodo de cuatro años.</li>
+          <li><strong>Atribución causal:</strong> el desempeño macro y social responde con rezago a la política, a choques externos y a la herencia del gobierno anterior. Estas cifras describen el periodo, no el efecto causal de quien gobernó.</li>
+        </ul>
+      </div>
+      <div>
+        
+        <ul>
+          <li>DANE — Cuentas Nacionales, GEIH (empleo e informalidad), Pobreza Monetaria y Multidimensional</li>
+          <li>Banco de la República — inflación, tasa de cambio, deuda externa, reservas</li>
+          <li>Ministerio de Hacienda y Crédito Público — déficit fiscal y deuda pública</li>
+          <li>DNP / MESEP — empalme metodológico de pobreza y desigualdad 2002–2010</li>
+          <li>Instituto Nacional de Medicina Legal y Ciencias Forenses / Policía Nacional — homicidios</li>
+          <li>Banco Mundial (API pública, sin clave) — serie usada por <code>fetch_colombia_kpis.py</code> para Colombia y para el agregado regional (código LCN)</li>
+          <li>CEPAL (Panorama Social) / OIT — referencia regional de pobreza, Gini e informalidad; UNODC — referencia regional de homicidios</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Datos regenerados desde colombia_kpis_fetched.json el 2026-06-18 17:46 UTC por build_dashboard.py · Petro: periodo en curso, datos parciales</span>
+    <span>Herramienta de orientación, con procedencia de datos documentada — no es una publicación oficial</span>
+  </footer>
+
+</div>
+
+<script>
+/* =========================================================================
+   DATA — Colombia
+   Nine four-year periods (Uribe and Santos split into their two terms so no
+   administration is compared at double the time window of the others).
+   Each field documented with its nominal source category in the notes
+   section above; see that section for an honest account of what was
+   actually verified via search vs. estimated from general knowledge.
+   null = not available / not comparable for that period.
+   ========================================================================= */
+const PRESIDENTS = [
+  {
+    "id": "gaviria",
+    "name": "César Gaviria",
+    "party": "Partido Liberal",
+    "start": "1990-08-07",
+    "end": "1994-08-07",
+    "economy": {
+      "gdpGrowth": 4.3,
+      "inflation": 25.7,
+      "fiscalDeficit": null,
+      "debtEnd": null
+    },
+    "employment": {
+      "unemployment": 8.9,
+      "informality": null
+    },
+    "social": {
+      "povertyStart": null,
+      "povertyEnd": null,
+      "extremeStart": 21.3,
+      "extremeEnd": 16.0,
+      "gini": 0.513,
+      "mpiEnd": null
+    },
+    "security": {
+      "homicideAvg": 75.0,
+      "homicideEnd": 77.0
+    },
+    "note": "Apertura económica y nueva Constitución (1991)."
+  },
+  {
+    "id": "samper",
+    "name": "Ernesto Samper",
+    "party": "Partido Liberal",
+    "start": "1994-08-07",
+    "end": "1998-08-07",
+    "economy": {
+      "gdpGrowth": 2.8,
+      "inflation": 19.7,
+      "fiscalDeficit": 3.78,
+      "debtEnd": 5.0
+    },
+    "employment": {
+      "unemployment": 11.9,
+      "informality": null
+    },
+    "social": {
+      "povertyStart": null,
+      "povertyEnd": null,
+      "extremeStart": 16.0,
+      "extremeEnd": 28.2,
+      "gini": 0.568,
+      "mpiEnd": null
+    },
+    "security": {
+      "homicideAvg": 77.0,
+      "homicideEnd": 61.0
+    },
+    "note": "Crisis de legitimidad (Proceso 8000) y deterioro fiscal hacia el final del mandato."
+  },
+  {
+    "id": "pastrana",
+    "name": "Andrés Pastrana",
+    "party": "Gran Alianza por el Cambio",
+    "start": "1998-08-07",
+    "end": "2002-08-07",
+    "economy": {
+      "gdpGrowth": 0.7,
+      "inflation": 8.6,
+      "fiscalDeficit": 5.8,
+      "debtEnd": 53.0
+    },
+    "employment": {
+      "unemployment": 17.5,
+      "informality": null
+    },
+    "social": {
+      "povertyStart": null,
+      "povertyEnd": null,
+      "extremeStart": 28.2,
+      "extremeEnd": 21.2,
+      "gini": 0.576,
+      "mpiEnd": null
+    },
+    "security": {
+      "homicideAvg": 61.0,
+      "homicideEnd": 70.0
+    },
+    "note": "Recesión de 1999, acuerdo con el FMI, ruptura del proceso de paz con las FARC."
+  },
+  {
+    "id": "uribe1",
+    "name": "Álvaro Uribe",
+    "party": "Independiente / Primero Colombia",
+    "start": "2002-08-07",
+    "end": "2006-08-07",
+    "termNumber": 1,
+    "economy": {
+      "gdpGrowth": 5.2,
+      "inflation": 5.6,
+      "fiscalDeficit": 4.48,
+      "debtEnd": 65.0
+    },
+    "employment": {
+      "unemployment": 12.3,
+      "informality": 69.1
+    },
+    "social": {
+      "povertyStart": null,
+      "povertyEnd": null,
+      "extremeStart": 21.2,
+      "extremeEnd": 16.8,
+      "gini": 0.542,
+      "mpiEnd": 29.7
+    },
+    "security": {
+      "homicideAvg": 70.0,
+      "homicideEnd": 41.0
+    },
+    "note": "Desmovilización de las AUC; comienza el auge de precios de materias primas."
+  },
+  {
+    "id": "uribe2",
+    "name": "Álvaro Uribe",
+    "party": "Independiente / Primero Colombia",
+    "start": "2006-08-07",
+    "end": "2010-08-07",
+    "termNumber": 2,
+    "economy": {
+      "gdpGrowth": 3.9,
+      "inflation": 4.8,
+      "fiscalDeficit": 3.48,
+      "debtEnd": 72.0
+    },
+    "employment": {
+      "unemployment": 11.4,
+      "informality": 69.1
+    },
+    "social": {
+      "povertyStart": null,
+      "povertyEnd": 41.0,
+      "extremeStart": 16.8,
+      "extremeEnd": 13.3,
+      "gini": 0.545,
+      "mpiEnd": 29.7
+    },
+    "security": {
+      "homicideAvg": 41.0,
+      "homicideEnd": 35.0
+    },
+    "note": "Reelección; la crisis financiera global de 2008-09 modera el crecimiento al final."
+  },
+  {
+    "id": "santos1",
+    "name": "Juan Manuel Santos",
+    "party": "Partido de la U",
+    "start": "2010-08-07",
+    "end": "2014-08-07",
+    "termNumber": 1,
+    "economy": {
+      "gdpGrowth": 5.1,
+      "inflation": 2.9,
+      "fiscalDeficit": 2.48,
+      "debtEnd": 48.0
+    },
+    "employment": {
+      "unemployment": 9.6,
+      "informality": 65.6
+    },
+    "social": {
+      "povertyStart": 41.0,
+      "povertyEnd": 37.0,
+      "extremeStart": 13.3,
+      "extremeEnd": 10.9,
+      "gini": 0.535,
+      "mpiEnd": 21.6
+    },
+    "security": {
+      "homicideAvg": 35.0,
+      "homicideEnd": 29.0
+    },
+    "note": "Auge minero-energético y regla fiscal (2011); inician negociaciones de paz en La Habana."
+  },
+  {
+    "id": "santos2",
+    "name": "Juan Manuel Santos",
+    "party": "Partido de la U",
+    "start": "2014-08-07",
+    "end": "2018-08-07",
+    "termNumber": 2,
+    "economy": {
+      "gdpGrowth": 2.2,
+      "inflation": 5.0,
+      "fiscalDeficit": 3.45,
+      "debtEnd": 72.0
+    },
+    "employment": {
+      "unemployment": 9.0,
+      "informality": 62.6
+    },
+    "social": {
+      "povertyStart": 37.0,
+      "povertyEnd": 35.5,
+      "extremeStart": 10.9,
+      "extremeEnd": 9.8,
+      "gini": 0.515,
+      "mpiEnd": 17.5
+    },
+    "security": {
+      "homicideAvg": 29.0,
+      "homicideEnd": 24.0
+    },
+    "note": "Caída de precios del petróleo (2014-16); firma del acuerdo de paz con las FARC (2016)."
+  },
+  {
+    "id": "duque",
+    "name": "Iván Duque",
+    "party": "Centro Democrático",
+    "start": "2018-08-07",
+    "end": "2022-08-07",
+    "economy": {
+      "gdpGrowth": 3.5,
+      "inflation": 4.9,
+      "fiscalDeficit": 5.65,
+      "debtEnd": 70.0
+    },
+    "employment": {
+      "unemployment": 12.7,
+      "informality": 61.8
+    },
+    "social": {
+      "povertyStart": 35.5,
+      "povertyEnd": 36.6,
+      "extremeStart": 9.8,
+      "extremeEnd": 9.3,
+      "gini": 0.542,
+      "mpiEnd": 12.9
+    },
+    "security": {
+      "homicideAvg": 24.0,
+      "homicideEnd": 25.0
+    },
+    "note": "Pandemia de COVID-19: PIB -7.2% (2020) seguido de +10.8% (2021)."
+  },
+  {
+    "id": "petro",
+    "name": "Gustavo Petro",
+    "party": "Pacto Histórico",
+    "start": "2022-08-07",
+    "end": "2026-08-07",
+    "economy": {
+      "gdpGrowth": 1.2,
+      "inflation": 9.2,
+      "fiscalDeficit": 5.77,
+      "debtEnd": 71.0
+    },
+    "employment": {
+      "unemployment": 9.2,
+      "informality": 55.2
+    },
+    "social": {
+      "povertyStart": 36.6,
+      "povertyEnd": 31.8,
+      "extremeStart": 9.3,
+      "extremeEnd": 8.5,
+      "gini": 0.545,
+      "mpiEnd": 9.9
+    },
+    "security": {
+      "homicideAvg": 25.0,
+      "homicideEnd": 25.8
+    },
+    "note": "Primer gobierno de izquierda; inflación post-pandemia alta cede gradualmente.",
+    "ongoing": true
+  }
+];
+
+const PALETTE = ['#B6772E','#A36F34','#8F683A','#7C603F','#695945','#55514B','#424951','#2E4256','#1B3A5C'];
+PRESIDENTS.forEach((p,i)=>p.color=PALETTE[i]);
+
+/* =========================================================================
+   DATA — Latin America & Caribbean, matched to the SAME nine four-year
+   periods as PRESIDENTS above (same field names, so every chart can look
+   itself up automatically). These are approximate estimates, not a verified
+   pull — see the notes section. Inflation is null for periods where a
+   simple regional mean is dominated by a single hyperinflation episode
+   (Brazil pre-1994) rather than being a meaningful "typical" comparator.
+   social.mpiEnd is null everywhere: no standardized regional MPI series
+   exists to compare against.
+   ========================================================================= */
+const REGION_BY_PERIOD = {
+  "gaviria": {
+    "economy": {
+      "gdpGrowth": 3.8,
+      "inflation": null,
+      "fiscalDeficit": null,
+      "debtEnd": null
+    },
+    "employment": {
+      "unemployment": 6.3,
+      "informality": null
+    },
+    "social": {
+      "povertyStart": null,
+      "povertyEnd": null,
+      "extremeStart": 20.7,
+      "extremeEnd": 19.5,
+      "gini": null,
+      "mpiEnd": null
+    },
+    "security": {
+      "homicideAvg": null,
+      "homicideEnd": null
+    }
+  },
+  "samper": {
+    "economy": {
+      "gdpGrowth": 3.3,
+      "inflation": null,
+      "fiscalDeficit": null,
+      "debtEnd": null
+    },
+    "employment": {
+      "unemployment": 8.2,
+      "informality": null
+    },
+    "social": {
+      "povertyStart": null,
+      "povertyEnd": null,
+      "extremeStart": 19.5,
+      "extremeEnd": 19.2,
+      "gini": null,
+      "mpiEnd": null
+    },
+    "security": {
+      "homicideAvg": null,
+      "homicideEnd": null
+    }
+  },
+  "pastrana": {
+    "economy": {
+      "gdpGrowth": 1.2,
+      "inflation": null,
+      "fiscalDeficit": null,
+      "debtEnd": null
+    },
+    "employment": {
+      "unemployment": 9.3,
+      "informality": null
+    },
+    "social": {
+      "povertyStart": null,
+      "povertyEnd": null,
+      "extremeStart": 19.2,
+      "extremeEnd": 17.1,
+      "gini": null,
+      "mpiEnd": null
+    },
+    "security": {
+      "homicideAvg": null,
+      "homicideEnd": null
+    }
+  },
+  "uribe1": {
+    "economy": {
+      "gdpGrowth": 4.3,
+      "inflation": null,
+      "fiscalDeficit": null,
+      "debtEnd": null
+    },
+    "employment": {
+      "unemployment": 8.5,
+      "informality": null
+    },
+    "social": {
+      "povertyStart": null,
+      "povertyEnd": null,
+      "extremeStart": 17.1,
+      "extremeEnd": 12.0,
+      "gini": null,
+      "mpiEnd": null
+    },
+    "security": {
+      "homicideAvg": null,
+      "homicideEnd": null
+    }
+  },
+  "uribe2": {
+    "economy": {
+      "gdpGrowth": 3.2,
+      "inflation": null,
+      "fiscalDeficit": null,
+      "debtEnd": null
+    },
+    "employment": {
+      "unemployment": 7.3,
+      "informality": null
+    },
+    "social": {
+      "povertyStart": null,
+      "povertyEnd": null,
+      "extremeStart": 12.0,
+      "extremeEnd": 8.5,
+      "gini": null,
+      "mpiEnd": null
+    },
+    "security": {
+      "homicideAvg": null,
+      "homicideEnd": 24.0
+    }
+  },
+  "santos1": {
+    "economy": {
+      "gdpGrowth": 2.7,
+      "inflation": null,
+      "fiscalDeficit": null,
+      "debtEnd": null
+    },
+    "employment": {
+      "unemployment": 6.4,
+      "informality": null
+    },
+    "social": {
+      "povertyStart": null,
+      "povertyEnd": null,
+      "extremeStart": 8.5,
+      "extremeEnd": 6.5,
+      "gini": null,
+      "mpiEnd": null
+    },
+    "security": {
+      "homicideAvg": 24.0,
+      "homicideEnd": 23.0
+    }
+  },
+  "santos2": {
+    "economy": {
+      "gdpGrowth": 0.6,
+      "inflation": null,
+      "fiscalDeficit": null,
+      "debtEnd": 71.0
+    },
+    "employment": {
+      "unemployment": 7.6,
+      "informality": null
+    },
+    "social": {
+      "povertyStart": null,
+      "povertyEnd": null,
+      "extremeStart": 6.5,
+      "extremeEnd": 6.1,
+      "gini": null,
+      "mpiEnd": null
+    },
+    "security": {
+      "homicideAvg": 23.0,
+      "homicideEnd": 23.0
+    }
+  },
+  "duque": {
+    "economy": {
+      "gdpGrowth": 1.1,
+      "inflation": null,
+      "fiscalDeficit": null,
+      "debtEnd": 69.0
+    },
+    "employment": {
+      "unemployment": 8.6,
+      "informality": null
+    },
+    "social": {
+      "povertyStart": null,
+      "povertyEnd": null,
+      "extremeStart": 6.1,
+      "extremeEnd": 5.0,
+      "gini": null,
+      "mpiEnd": null
+    },
+    "security": {
+      "homicideAvg": 23.0,
+      "homicideEnd": 20.0
+    }
+  },
+  "petro": {
+    "economy": {
+      "gdpGrowth": 2.2,
+      "inflation": null,
+      "fiscalDeficit": null,
+      "debtEnd": null
+    },
+    "employment": {
+      "unemployment": 5.8,
+      "informality": null
+    },
+    "social": {
+      "povertyStart": null,
+      "povertyEnd": null,
+      "extremeStart": 5.0,
+      "extremeEnd": 4.3,
+      "gini": null,
+      "mpiEnd": null
+    },
+    "security": {
+      "homicideAvg": 20.0,
+      "homicideEnd": null
+    }
+  }
+};
+
+const RANGE_START = new Date('1990-08-07');
+const RANGE_END   = new Date('2026-08-07');
+const RANGE_DAYS  = (RANGE_END - RANGE_START);
+
+let selected = new Set(PRESIDENTS.map(p=>p.id));
+let activeTab = 'economy';
+
+/* ---------------------------- Ribbon ---------------------------- */
+function buildRibbon(){
+  const ribbon = document.getElementById('ribbon');
+  ribbon.innerHTML = '';
+  PRESIDENTS.forEach((p, idx)=>{
+    const start = new Date(p.start), end = new Date(p.end);
+    const widthPct = ((end-start)/RANGE_DAYS*100).toFixed(3);
+    const el = document.createElement('div');
+    el.className = 'term';
+    el.style.width = widthPct+'%';
+    el.style.animationDelay = (idx*60)+'ms';
+    el.dataset.id = p.id;
+    el.dataset.active = 'true';
+    el.innerHTML = '<div class="fill" style="background:'+p.color+'"></div>'+
+                    '<div class="label">'+shortName(p)+(p.ongoing?' *':'')+'</div>';
+    el.title = fullLabel(p)+' — '+p.start.slice(0,4)+'–'+p.end.slice(0,4)+(p.ongoing?' (en curso)':'');
+    el.addEventListener('click', function(){ toggleTerm(p.id); });
+    ribbon.appendChild(el);
+  });
+}
+
+function toggleTerm(id){
+  if(selected.has(id)){
+    if(selected.size===1) return;
+    selected.delete(id);
+  } else {
+    selected.add(id);
+  }
+  syncRibbonState();
+  renderTab(activeTab);
+}
+
+function syncRibbonState(){
+  document.querySelectorAll('.term').forEach(function(el){
+    el.dataset.active = selected.has(el.dataset.id) ? 'true' : 'false';
+  });
+}
+
+document.getElementById('selectAll').addEventListener('click', function(){
+  selected = new Set(PRESIDENTS.map(p=>p.id));
+  syncRibbonState();
+  renderTab(activeTab);
+});
+document.getElementById('selectNone').addEventListener('click', function(){
+  selected = new Set([PRESIDENTS[PRESIDENTS.length-1].id]);
+  syncRibbonState();
+  renderTab(activeTab);
+});
+
+/* ---------------------------- Tabs ---------------------------- */
+const TABS = [
+  {id:'economy', label:'Economía', intro:'Crecimiento, inflación y postura fiscal — promedios de los años calendario completos dentro de cada periodo de cuatro años, salvo donde se indique "fin de periodo". La marca roja en cada barra es el promedio regional para ese mismo periodo.'},
+  {id:'employment', label:'Empleo', intro:'La tasa de desempleo general es menos informativa en Colombia que en otros países por el peso estructural de la informalidad laboral, incluida aquí como indicador propio.'},
+  {id:'social', label:'Social', intro:'Pobreza y desigualdad mostradas como cambio durante el periodo (inicio → fin) cuando hay datos comparables; el Gini y la pobreza multidimensional se muestran como nivel.'},
+  {id:'security', label:'Seguridad', intro:'La tasa de homicidios ha sido, históricamente, uno de los indicadores más políticamente decisivos en Colombia — más incluso que el desempeño macroeconómico.'}
+];
+
+function buildTabs(){
+  const nav = document.getElementById('tabs');
+  nav.innerHTML = '';
+  TABS.forEach(function(t){
+    const btn = document.createElement('button');
+    btn.textContent = t.label;
+    btn.setAttribute('role','tab');
+    btn.setAttribute('aria-selected', t.id===activeTab ? 'true':'false');
+    btn.addEventListener('click', function(){
+      activeTab = t.id;
+      document.querySelectorAll('nav.tabs button').forEach(function(b){ b.setAttribute('aria-selected','false'); });
+      btn.setAttribute('aria-selected','true');
+      renderTab(activeTab);
+    });
+    nav.appendChild(btn);
+  });
+}
+
+/* ---------------------------- Helpers ---------------------------- */
+function getPath(obj, path){
+  return path.split('.').reduce(function(v,k){ return v ? v[k] : null; }, obj);
+}
+function activePresidents(){ return PRESIDENTS.filter(function(p){ return selected.has(p.id); }); }
+function fmt(v, decimals){ return v===null || v===undefined ? null : v.toFixed(decimals===undefined?1:decimals); }
+function years(p){ return p.start.slice(0,4)+(p.ongoing?'–*':'–'+p.end.slice(0,4)); }
+function shortName(p){ return p.name.split(' ').slice(-1)[0] + (p.termNumber ? ' '+(p.termNumber===1?'I':'II') : ''); }
+function fullLabel(p){ return p.name + (p.termNumber ? ' ('+(p.termNumber===1?'primer mandato':'segundo mandato')+')' : ''); }
+
+function domainMax(keys){
+  // Scans both PRESIDENTS and REGION_BY_PERIOD (same field shape) so the
+  // region tick always fits on the same scale as the bars.
+  let max = 0;
+  PRESIDENTS.forEach(function(p){
+    keys.forEach(function(k){ const v = getPath(p, k); if(v!==null && v!==undefined && v>max) max = v; });
+  });
+  Object.values(REGION_BY_PERIOD).forEach(function(r){
+    keys.forEach(function(k){ const v = getPath(r, k); if(v!==null && v!==undefined && v>max) max = v; });
+  });
+  return max * 1.18;
+}
+
+function addRegionTick(parentEl, max, value, suffix, decimals, periodLabel){
+  if(value===null || value===undefined || max<=0) return;
+  const pct = Math.min((value/max*100), 100);
+  const tick = document.createElement('div');
+  tick.className = 'region-tick';
+  tick.style.bottom = pct+'%';
+  tick.title = 'ALC ('+periodLabel+'): '+fmt(value, decimals)+suffix;
+  parentEl.appendChild(tick);
+}
+
+function cardSkeleton(container, title, unit, source){
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML =
+    '<h3>'+title+'</h3><span class="unit">'+unit+'</span>'+
+    '<div class="legend-slot"></div>'+
+    '<div class="bars-wrap"><div class="plot"></div><div class="xlabels"></div></div>'+
+    '<div class="src">Fuente: '+source+'</div>';
+  container.appendChild(card);
+  return card;
+}
+
+/* Single-series bar chart: one bar per selected period, plus a per-period
+   regional tick drawn from REGION_BY_PERIOD using the SAME key path. */
+function renderSingleChart(container, opts){
+  // opts: {title, unit, source, key, suffix, decimals}
+  const list = activePresidents();
+  const card = cardSkeleton(container, opts.title, opts.unit, opts.source);
+  const plot = card.querySelector('.plot');
+  const xlabels = card.querySelector('.xlabels');
+  const max = domainMax([opts.key]);
+
+  const anyRegion = list.some(function(p){ const r=REGION_BY_PERIOD[p.id]; return r && getPath(r,opts.key)!==null && getPath(r,opts.key)!==undefined; });
+  if(anyRegion){
+    card.querySelector('.legend-slot').innerHTML = '<div class="legend"><span><i class="swatch-dash"></i>Promedio regional (ALC), mismo periodo</span></div>';
+  }
+
+  list.forEach(function(p){
+    const v = getPath(p, opts.key);
+    const col = document.createElement('div');
+    col.className = 'col';
+    if(v===null || v===undefined){
+      col.innerHTML = '<span class="val muted">s/d</span><div class="bar dashed"></div>';
+    } else {
+      const pct = max>0 ? Math.max((v/max*100), 2) : 2;
+      col.innerHTML = '<span class="val">'+fmt(v, opts.decimals)+opts.suffix+'</span>'+
+                       '<div class="bar" data-pct="'+pct+'" style="background:'+p.color+'"></div>';
+      col.title = fullLabel(p)+': '+fmt(v, opts.decimals)+opts.suffix;
+    }
+    const region = REGION_BY_PERIOD[p.id];
+    const rv = region ? getPath(region, opts.key) : null;
+    addRegionTick(col, max, rv, opts.suffix, opts.decimals, years(p));
+    plot.appendChild(col);
+
+    const xl = document.createElement('div');
+    xl.className = 'xlabel';
+    xl.innerHTML = '<b>'+shortName(p)+'</b>'+years(p);
+    xlabels.appendChild(xl);
+  });
+
+  growBars(plot);
+}
+
+/* Grouped bar chart: two matched series (e.g. start/end of period) per
+   selected period, each with its own regional tick from REGION_BY_PERIOD. */
+function renderGroupedChart(container, opts){
+  // opts: {title, unit, source, keyStart, keyEnd, suffix, decimals, startLabel, endLabel}
+  const startLabel = opts.startLabel || 'Inicio';
+  const endLabel = opts.endLabel || 'Fin';
+  const list = activePresidents();
+  const card = cardSkeleton(container, opts.title, opts.unit, opts.source);
+  const anyRegion = list.some(function(p){
+    const r=REGION_BY_PERIOD[p.id];
+    return r && (getPath(r,opts.keyStart)!==null || getPath(r,opts.keyEnd)!==null);
+  });
+  card.querySelector('.legend-slot').innerHTML =
+    '<div class="legend"><span><i style="background:var(--rule)"></i>'+startLabel+'</span><span><i style="background:var(--navy)"></i>'+endLabel+'</span>'+
+    (anyRegion ? '<span><i class="swatch-dash"></i>ALC, mismo periodo</span>' : '')+'</div>';
+  const plot = card.querySelector('.plot');
+  const xlabels = card.querySelector('.xlabels');
+  const max = domainMax([opts.keyStart, opts.keyEnd]);
+
+  list.forEach(function(p){
+    const vs = getPath(p, opts.keyStart);
+    const ve = getPath(p, opts.keyEnd);
+    const region = REGION_BY_PERIOD[p.id];
+    const rvs = region ? getPath(region, opts.keyStart) : null;
+    const rve = region ? getPath(region, opts.keyEnd) : null;
+    const col = document.createElement('div');
+    col.className = 'col';
+    const sub = document.createElement('div');
+    sub.className = 'subcols';
+
+    [[startLabel, vs, 'var(--rule)', rvs], [endLabel, ve, 'var(--navy)', rve]].forEach(function(pair){
+      const subcol = document.createElement('div');
+      subcol.className = 'subcol';
+      const v = pair[1];
+      if(v===null || v===undefined){
+        subcol.innerHTML = '<span class="val muted" style="font-size:9px;">s/d</span><div class="bar dashed"></div>';
+      } else {
+        const pct = max>0 ? Math.max((v/max*100), 2) : 2;
+        subcol.innerHTML = '<span class="val" style="font-size:9.5px;">'+fmt(v, opts.decimals)+'</span>'+
+                            '<div class="bar" data-pct="'+pct+'" style="background:'+pair[2]+'"></div>';
+        subcol.title = fullLabel(p)+' ('+pair[0]+'): '+fmt(v, opts.decimals)+opts.suffix;
+      }
+      addRegionTick(subcol, max, pair[3], opts.suffix, opts.decimals, years(p)+', '+pair[0].toLowerCase());
+      sub.appendChild(subcol);
+    });
+
+    col.appendChild(sub);
+    plot.appendChild(col);
+
+    const xl = document.createElement('div');
+    xl.className = 'xlabel';
+    xl.innerHTML = '<b>'+shortName(p)+'</b>'+years(p);
+    xlabels.appendChild(xl);
+  });
+
+  growBars(plot);
+}
+
+function growBars(plot){
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      plot.querySelectorAll('.bar[data-pct]').forEach(function(bar){
+        bar.style.height = bar.dataset.pct+'%';
+      });
+    });
+  });
+}
+
+/* ---------------------------- Tab render ---------------------------- */
+function renderTab(tabId){
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  const tabDef = TABS.find(function(t){ return t.id===tabId; });
+  document.getElementById('catIntro').textContent = tabDef.intro;
+
+  if(activePresidents().length===0) return;
+
+  if(tabId==='economy'){
+    renderSingleChart(grid, {title:'Crecimiento del PIB, promedio anual', unit:'% anual, precios constantes', source:'Banco Mundial, API (NY.GDP.MKTP.KD.ZG)', key:'economy.gdpGrowth', suffix:'%', decimals:1});
+    renderSingleChart(grid, {title:'Inflación, promedio anual', unit:'% anual, IPC', source:'Banco Mundial, API (FP.CPI.TOTL.ZG)', key:'economy.inflation', suffix:'%', decimals:1});
+    renderSingleChart(grid, {title:'Déficit fiscal, promedio', unit:'% del PIB, Gobierno Central', source:'MinHacienda - Balance Gobierno Nacional Central + carga manual (fiscalDeficit, periodo(s) específico(s)) — ver overrides.json', key:'economy.fiscalDeficit', suffix:'%', decimals:1});
+    renderSingleChart(grid, {title:'Deuda pública bruta, fin de periodo', unit:'% del PIB', source:'Banco Mundial, API (GC.DOD.TOTL.GD.ZS) — cobertura incompleta para Colombia', key:'economy.debtEnd', suffix:'%', decimals:0});
+  }
+  if(tabId==='employment'){
+    renderSingleChart(grid, {title:'Tasa de desempleo, promedio', unit:'% de la fuerza laboral', source:'Banco Mundial, API (SL.UEM.TOTL.ZS, estimación modelada OIT — no es la serie GEIH del DANE)', key:'employment.unemployment', suffix:'%', decimals:1});
+    renderSingleChart(grid, {title:'Informalidad laboral, promedio', unit:'% de los ocupados — serie consistente solo desde ~2007', source:'DANE — GEIH / estimación OIT (anclas verificadas, años intermedios interpolados) + carga manual (informality) — ver overrides.json', key:'employment.informality', suffix:'%', decimals:0});
+  }
+  if(tabId==='social'){
+    renderGroupedChart(grid, {title:'Pobreza monetaria', unit:'% de la población — inicio vs. fin de periodo', source:'Banco Mundial, API (SI.POV.NAHC) — puede no coincidir con la serie oficial DANE/MESEP', keyStart:'social.povertyStart', keyEnd:'social.povertyEnd', suffix:'%', decimals:1});
+    renderGroupedChart(grid, {title:'Pobreza extrema', unit:'% de la población — inicio vs. fin de periodo', source:'Banco Mundial, API (SI.POV.DDAY, línea internacional de USD 2.15/día) — no es la línea nacional del DANE', keyStart:'social.extremeStart', keyEnd:'social.extremeEnd', suffix:'%', decimals:1});
+    renderSingleChart(grid, {title:'Coeficiente de Gini, promedio', unit:'0 = igualdad perfecta, 1 = máxima desigualdad', source:'Banco Mundial, API (SI.POV.GINI)', key:'social.gini', suffix:'', decimals:2});
+    renderSingleChart(grid, {title:'Pobreza multidimensional, fin de periodo', unit:'% de la población — serie disponible desde 2010; sin comparador regional homologado', source:'DANE, boletines de Pobreza Multidimensional + carga manual (mpiEnd) — ver overrides.json', key:'social.mpiEnd', suffix:'%', decimals:1});
+  }
+  if(tabId==='security'){
+    renderGroupedChart(grid, {title:'Tasa de homicidios', unit:'por 100.000 habitantes — inicio del periodo vs. fin de periodo', source:'Banco Mundial, API (VC.IHR.PSRC.P5, fuente original UNODC) — puede diferir del conteo del INMLCF', keyStart:'security.homicideAvg', keyEnd:'security.homicideEnd', suffix:'', decimals:0, startLabel:'Inicio del periodo', endLabel:'Fin de periodo'});
+  }
+}
+
+/* ---------------------------- Init ---------------------------- */
+buildRibbon();
+buildTabs();
+renderTab(activeTab);
+</script>
+</body>
+</html>
