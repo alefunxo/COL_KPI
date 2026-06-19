@@ -119,10 +119,6 @@ Edita `overrides.json` siguiendo la estructura existente y luego re-ejecuta el p
 - **Pobreza extrema**: el Banco Mundial usa la línea internacional de USD 2.15/día (2017 PPP), que no coincide con la línea nacional extrema del DANE.
 - **Homicidios**: la serie del Banco Mundial proviene de UNODC; puede diferir del conteo del Instituto Nacional de Medicina Legal y Ciencias Forenses.
 
-## Credenciales (datos.gov.co)
-
-`fetch_dane_opendata.py` y `diag.py` usan un token de la API de Socrata. Copia `.env.example` a `.env` y rellena tus credenciales — `.env` está en `.gitignore` y nunca se compromete al repositorio.
-
 ## Licencia
 
 Los datos provienen de fuentes públicas (Banco Mundial, DANE, Ministerio de Hacienda). El código de este repositorio está bajo licencia [MIT](LICENSE).
