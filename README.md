@@ -37,12 +37,9 @@ Todo campo marcado `s/d` está genuinamente sin dato verificado. Los campos `***
 ├── index.html                    # Panel publicado (también la plantilla del pipeline)
 ├── overrides.json                # Valores con fuente manual; enlazado desde index.html
 ├── requirements.txt
-├── .env.example                  # Plantilla de credenciales para datos.gov.co
 ├── scripts/
 │   ├── fetch_col_kpis.py         # Consulta la API del Banco Mundial
 │   ├── build_dashboard.py        # Inyecta los datos en index.html
-│   ├── fetch_dane_opendata.py    # Exploración del catálogo de datos.gov.co
-│   └── diag.py                   # Diagnóstico de autenticación Socrata
 └── data/
     ├── colombia_kpis_fetched.json           # Última consulta API (comprometida para auditoría)
     ├── anex-GEIHEISS-oct-dic2025.xlsx       # DANE GEIH — informalidad
