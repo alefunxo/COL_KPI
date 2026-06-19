@@ -1,0 +1,192 @@
+{
+  "_readme": "Manual overrides layered on top of fetch_colombia_kpis.py's World Bank API output. Scoped to fields the World Bank has no usable series for at all (informality, mpiEnd), plus two fields with a specific verified anchor (Petro's fiscalDeficit, Petro's homicideEnd). JSON has no native comment syntax, so per-field provenance is stored as sibling keys ('source', 'url') rather than // comments -- every value below is self-documenting. 'verified_this_session: true' means a primary document was actually located and read this session. 'false' means the number is carried over from an earlier, less rigorously sourced prototype and has NOT been independently re-checked -- treat those as orientative only. Where a prototype value was found to be wrong (Santos II mpiEnd: 17.5 -> 19.1), the old value is kept in '_superseded' for the audit trail rather than silently dropped.",
+
+  "country": {
+
+    "gaviria": {
+      "approval": {
+        "end": { "value": 53, "verified_this_session": true, "source": "Citada por el gerente de Gallup Colombia en una nota retrospectiva de El Colombiano (6 ago 2010) que resume la serie histórica de favorabilidad de Invamer Gallup por presidente.", "url": null }
+      }
+    },
+
+    "samper": {
+      "approval": {
+        "end": { "value": 30, "verified_this_session": true, "source": "Misma nota retrospectiva de El Colombiano (6 ago 2010), citando al gerente de Gallup Colombia.", "url": null }
+      },
+      "economy": {
+        "fiscalDeficit": { "value": 3.78, "verified_this_session": false, "source": "https://www.minhacienda.gov.co/politica-fiscal/cifras-de-politica-fiscal/gobierno-nacional-central/balance/-/document_library/dgai/view/421881", "url": null }
+      }
+    },
+
+    "pastrana": {
+      "approval": {
+        "end": { "value": 21, "verified_this_session": true, "source": "Misma nota retrospectiva de El Colombiano (6 ago 2010), citando al gerente de Gallup Colombia.", "url": null }
+      },
+      "economy": {
+        "fiscalDeficit": { "value": 5.8, "verified_this_session": false, "source": "https://www.minhacienda.gov.co/politica-fiscal/cifras-de-politica-fiscal/gobierno-nacional-central/balance/-/document_library/dgai/view/421881", "url": null }
+      }
+    },
+
+    "uribe1": {
+      "approval": {
+        "start": { "value": 69, "verified_this_session": true, "source": "El Tiempo, nota retrospectiva (2010), citando la encuesta bimensual Invamer Gallup de agosto de 2002.", "url": null },
+        "end":   { "value": 77, "verified_this_session": true, "source": "Misma nota de El Tiempo; cifra de agosto de 2006 -- coincide con el inicio de Uribe II por la reelección continua (mismo presidente, sin transición).", "url": null }
+      },
+      "economy": {
+        "fiscalDeficit": { "value": 4.48, "verified_this_session": false, "source": "https://www.minhacienda.gov.co/politica-fiscal/cifras-de-politica-fiscal/gobierno-nacional-central/balance/-/document_library/dgai/view/421881", "url": null }
+      }
+    },
+
+    "uribe2": {
+      "approval": {
+        "start": { "value": 77, "verified_this_session": true, "source": "El Tiempo, nota retrospectiva (2010), citando Invamer Gallup agosto de 2006 -- mismo dato que el fin de Uribe I, por la reelección continua.", "url": null },
+        "end": {
+          "value": 75,
+          "verified_this_session": true,
+          "source": "El Tiempo: 'Álvaro Uribe culmina su mandato con una favorabilidad del 75%, según encuesta bimensual de Gallup' (agosto 2010).",
+          "url": null,
+          "alt_value": 80,
+          "alt_source": "El País cita 80% de aprobación 'a una semana de concluir' el mandato, misma metodología Gallup, lectura posterior y por tanto más alta.",
+          "caveat": "Se usa 75% como cifra principal por estar explícitamente enmarcada como 'fin de mandato' en la fuente; 80% es una lectura distinta, más tardía, de la misma encuesta bimensual."
+        }
+      },
+      "social": {
+        "mpiEnd": {
+          "value": 29.7,
+          "verified_this_session": true,
+          "source": "DANE, Pobreza Multidimensional (IPM), hoja IPM_Dominios, fila Nacional, año 2010 (fin de periodo).",
+          "url": "https://www.dane.gov.co/files/operaciones/PM/anex-PMultidimensional-2025.xlsx"
+        }
+      },
+      "economy": {
+        "fiscalDeficit": { "value": 3.48, "verified_this_session": false, "source": "https://www.minhacienda.gov.co/politica-fiscal/cifras-de-politica-fiscal/gobierno-nacional-central/balance/-/document_library/dgai/view/421881", "url": null }
+      }
+    },
+
+    "santos1": {
+      "approval": {
+        "start": { "value": 76, "verified_this_session": true, "source": "politicaexterior.com: 'Santos... pasó de un 76% de aceptación en octubre de 2010 a un 21% en septiembre de 2013'.", "url": null }
+      },
+      "social": {
+        "mpiEnd": {
+          "value": 21.6,
+          "verified_this_session": true,
+          "source": "DANE, Pobreza Multidimensional (IPM), hoja IPM_Dominios, fila Nacional, año 2014 (fin de periodo).",
+          "url": "https://www.dane.gov.co/files/operaciones/PM/anex-PMultidimensional-2025.xlsx"
+        }
+      },
+      "economy": {
+        "fiscalDeficit": { "value": 2.48, "verified_this_session": false, "source": "https://www.minhacienda.gov.co/politica-fiscal/cifras-de-politica-fiscal/gobierno-nacional-central/balance/-/document_library/dgai/view/421881", "url": null }
+      }
+    },
+
+    "santos2": {
+      "approval": {
+        "end": { "value": 22, "verified_this_session": true, "source": "Wikipedia, citando El Colombiano (ago 2018): Santos dejó el cargo con uno de los niveles más bajos de aprobación de la historia, apenas 22%.", "url": null, "caveat": "Inicio de Santos II (ago 2014) no localizado con una cifra contemporánea limpia -- el punto más cercano disponible es 21% en septiembre de 2013, un mínimo previo a la campaña de reelección, no la cifra exacta de la transición de mandato. Se deja 'start' sin valor en vez de usar ese dato aproximado." }
+      },
+      "social": {
+        "mpiEnd": {
+          "value": 19.1,
+          "verified_this_session": true,
+          "source": "DANE, Pobreza Multidimensional (IPM), hoja IPM_Dominios, fila Nacional, año 2018 (fin de periodo).",
+          "url": "https://www.dane.gov.co/files/operaciones/PM/anex-PMultidimensional-2025.xlsx",
+          "_superseded": "An earlier prototype used 17.5 for this field. That is actually the 2019 figure, not 2018 (true end of Santos II) -- corrected here after re-reading the DANE annex."
+        }
+      },
+      "economy": {
+        "fiscalDeficit": { "value": 3.45, "verified_this_session": false, "source": "https://www.minhacienda.gov.co/politica-fiscal/cifras-de-politica-fiscal/gobierno-nacional-central/balance/-/document_library/dgai/view/421881", "url": null }
+      }
+    },
+
+    "duque": {
+      "approval": {
+        "start": { "value": 40, "verified_this_session": true, "source": "El Tiempo, primera lectura Invamer tras la posesión del 7 de agosto de 2018.", "url": null },
+        "end": { "value": 35, "verified_this_session": true, "source": "Infobae; cifra consistente con un ~65% de desaprobación reportado por dos fuentes independientes para el cierre del mandato (agosto 2022).", "url": null }
+      },
+      "social": {
+        "mpiEnd": {
+          "value": 12.9,
+          "verified_this_session": true,
+          "source": "DANE, Pobreza Multidimensional (IPM), hoja IPM_Dominios, fila Nacional, año 2022 (fin de periodo).",
+          "url": "https://www.dane.gov.co/files/operaciones/PM/anex-PMultidimensional-2025.xlsx"
+        }
+      },
+      "employment": {
+        "informality": {
+          "value": 58.7,
+          "partial": true,
+          "verified_this_session": true,
+          "source": "DANE GEIH, dominio Total Nacional, promedio ponderado 2021-2022 (suma Ocupados Informales / suma Ocupados x100, ambos años).",
+          "url": "https://www.dane.gov.co/files/operaciones/GEIH/anex-GEIHEISS-oct-dic2025.xlsx",
+          "caveat": "DANE's GEIH marco 2018 redesign makes 2021 onward the first officially comparable Total Nacional informality series, so 2019-2020 is excluded here, not just unsearched. A pre-2021 bulletin (anexo_geih_informalidad_oct20_dic20) does include a Total Nacional breakdown internally, but the headline figure reported in the press for that quarter (49%) matches the 13-ciudades urban domain, not Total Nacional -- the actual Total Nacional cell in that annex has not been read yet. Open lead, not data."
+        }
+      },
+      "economy": {
+        "fiscalDeficit": { "value": 5.65, "verified_this_session": false, "source": "https://www.minhacienda.gov.co/politica-fiscal/cifras-de-politica-fiscal/gobierno-nacional-central/balance/-/document_library/dgai/view/421881", "url": null }
+      }
+    },
+
+    "petro": {
+      "approval": {
+        "start": {
+          "value": 50,
+          "verified_this_session": true,
+          "source": "Cifra aproximada, citada como referencia en Infobae (agosto 2025): el gobierno 'sigue lejos del 50% con el que inició su mandato'. Corresponde a Invamer, agosto/septiembre de 2022.",
+          "url": null,
+          "caveat": "Cifra de referencia citada retrospectivamente por un medio, no la lectura primaria de la encuesta de Invamer de ese momento -- más débil que las demás cifras de aprobación de este archivo."
+        },
+        "end": {
+          "value": 37,
+          "verified_this_session": true,
+          "source": "Invamer, agosto de 2025 (vía El Colombiano/Infobae) -- lectura más reciente disponible.",
+          "url": null,
+          "caveat": "El periodo de Petro está en curso hasta agosto de 2026: esto NO es una cifra de 'fin de mandato' equivalente a las de los demás presidentes, es la lectura más reciente disponible mientras el mandato continúa."
+        }
+      },
+      "economy": {
+        "fiscalDeficit": {
+          "value": 5.8,
+          "verified_this_session": true,
+          "source": "Average of three annual Gobierno Nacional Central balance/PIB figures: 2023 = 4.3%, 2024 = 6.7%, 2025 = 6.4%. The 2024 and 2025 figures come from Ministerio de Hacienda's own Plan Financiero 2026 update, corroborated independently by Valora Analitik, Portafolio, El Nuevo Siglo, and a Reuters wire piece carried by GBM Media. 2023 rests on a single secondary citation (Observatorio Fiscal de Armenia, citing CARF/MinHacienda) and is the weakest-sourced of the three years.",
+          "url": "https://www.minhacienda.gov.co/politica-fiscal/cifras-de-politica-fiscal/gobierno-nacional-central/balance/-/document_library/dgai/view/421881?_com_liferay_document_library_web_portlet_DLPortlet_INSTANCE_dgai_folderId=421881&_com_liferay_document_library_web_portlet_DLPortlet_INSTANCE_dgai_navigation=home&_com_liferay_document_library_web_portlet_DLPortlet_INSTANCE_dgai_displayStyle=list"
+        }
+      },
+      "employment": {
+        "informality": {
+          "value": 56.0,
+          "verified_this_session": true,
+          "source": "DANE GEIH, dominio Total Nacional, promedio ponderado 2023-2025 (2026 excluido, año incompleto).",
+          "url": "https://www.dane.gov.co/files/operaciones/GEIH/anex-GEIHEISS-oct-dic2025.xlsx"
+        }
+      },
+      "social": {
+        "mpiEnd": {
+          "value": 9.9,
+          "verified_this_session": true,
+          "source": "DANE, Pobreza Multidimensional (IPM), hoja IPM_Dominios, fila Nacional, año 2025 (último año disponible; periodo en curso hasta agosto 2026).",
+          "url": "https://www.dane.gov.co/files/operaciones/PM/anex-PMultidimensional-2025.xlsx"
+        }
+      },
+      "security": {
+        "homicideEnd": {
+          "value": 27.9,
+          "verified_this_session": true,
+          "source": "Instituto Nacional de Medicina Legal y Ciencias Forenses, 2025, cifra preliminar (14.780 casos).",
+          "url": null,
+          "alt_value": 25.8,
+          "alt_source": "InSight Crime, 2025 Homicide Round-Up. Parece usar clasificación policial en lugar de forense -- metodológicamente distinta de Medicina Legal, no un error de transcripción.",
+          "alt_url": "https://insightcrime.org/news/insight-crime-2025-homicide-round-up/",
+          "caveat": "Neither figure is the UNODC/World Bank series used for the rest of the homicide chart, so this point is not strictly comparable across periods -- it is the best available reading for a still-ongoing term, not an equivalent end-of-term figure."
+        }
+      }
+    }
+  },
+
+  "region": {
+    "_note": "No manual overrides for the regional (ALC) series in this file. The World Bank's LCN aggregate is used as-is wherever it exists. No standardized regional comparator exists for MPI, or for Colombia-domain informality, so those stay null in REGION_BY_PERIOD rather than being hand-estimated."
+  },
+
+  "_explicitly_not_carried_over_from_old_prototype": {
+    "note": "An earlier prototype also had employment.informality values for uribe1 (69.1), uribe2 (69.1), santos1 (65.6), and santos2 (62.6). Those are NOT included here: they have no identifiable DANE source, and the fact that the old Duque (61.8) and Petro (55.2) figures from that same prototype already diverge from the DANE-verified values used here (58.7, 56.0) suggests a different domain or vintage -- plausibly the same 13-ciudades-vs-Total-Nacional mismatch flagged elsewhere in this project. Re-adding them would silently reintroduce that error."
+  }
+}

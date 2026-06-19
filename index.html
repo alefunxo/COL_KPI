@@ -84,6 +84,7 @@
   main{padding:28px 0 8px;}
   .cat-intro{ font-size:13.5px; color:var(--ink-soft); max-width:760px; margin:0 0 22px; }
   .grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:18px; }
+  .card.wide{ grid-column:1 / -1; }
   @media (max-width:720px){ .grid{grid-template-columns:1fr;} }
   .card{ background:var(--paper-raised); border:1px solid var(--rule); border-radius:var(--radius); padding:18px 18px 14px; }
   .card h3{ font-family:'IBM Plex Sans', sans-serif; font-size:14px; font-weight:600; margin:0 0 2px; }
@@ -103,7 +104,7 @@
   .bar.dashed{ width:60%; border:1px dashed var(--rule); border-bottom:none; background:transparent; }
   .bar.partial{ background-image:repeating-linear-gradient(135deg, rgba(255,255,255,.35) 0 4px, transparent 4px 8px); }
   .subcols{ display:flex; gap:3px; width:100%; height:100%; align-items:flex-end; justify-content:center; }
-  .subcol{ flex:1; max-width:20px; height:100%; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; position:relative; }
+  .subcol{ flex:1; max-width:36px; height:100%; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; position:relative; }
   .subcol .bar{ width:100%; }
   .xlabels{ display:flex; gap:6px; margin-top:8px; }
   .xlabel{ flex:1; text-align:center; font-family:'IBM Plex Mono', monospace; font-size:9.5px; color:var(--ink-soft); line-height:1.35; min-width:0; }
@@ -136,11 +137,16 @@
     .card .src{ font-size:9px; }
     .card .legend{ font-size:9.5px; gap:9px; margin-bottom:8px; }
 
-    .plot{ height:140px; gap:3px; }
+    .bars-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; margin:0 -13px; padding:0 13px; }
+    .plot{ height:140px; gap:4px; width:max-content; min-width:100%; }
+    .col{ flex:0 0 50px; }
+    .xlabels{ width:max-content; min-width:100%; gap:4px; }
+    .xlabel{ flex:0 0 50px; }
     .col .val{ font-size:9px; margin-bottom:3px; }
     .xlabel{ font-size:8.5px; }
     .xlabel b{ font-size:9px; }
-    .subcol{ max-width:14px; }
+    .subcol{ max-width:23px; }
+    .subcols{ gap:4px; }
 
     .notes-grid{ grid-template-columns:1fr; gap:18px; }
     section.notes h2{ font-size:17px; }
@@ -202,31 +208,35 @@
     <h2>Procedencia de cada cifra</h2>
     <div class="notes-grid">
       <div>
-        <p><strong>Dos fuentes primarias distintas, sin mezclarlas.</strong> Crecimiento del PIB, inflación, déficit fiscal, deuda, desempleo, pobreza monetaria, pobreza extrema, Gini y homicidios vienen de una consulta real a la API del Banco Mundial (<code>fetch_colombia_kpis.py</code>, ejecutado el 18 de junio de 2026), para Colombia y para el agregado regional América Latina y el Caribe (código LCN). Pobreza multidimensional (IPM) e informalidad laboral vienen directamente de archivos oficiales del DANE, descargados y calculados en esta sesión — no de memoria ni de prensa.</p>
+        <p><strong>Dos fuentes primarias distintas, sin mezclarlas.</strong> Crecimiento del PIB, inflación, deuda, desempleo, pobreza monetaria, pobreza extrema, Gini y la mayoría de homicidios vienen de una consulta real a la API del Banco Mundial (<code>fetch_colombia_kpis.py</code>, ejecutado el 18 de junio de 2026), para Colombia y para el agregado regional América Latina y el Caribe (código LCN). Pobreza multidimensional (IPM) e informalidad laboral vienen directamente de archivos oficiales del DANE, descargados y calculados en esta sesión. El déficit fiscal y la cifra de homicidios 2025 de Petro vienen de Ministerio de Hacienda e Instituto Nacional de Medicina Legal respectivamente — ningún valor sale de memoria ni de prensa sin enlace. El detalle completo de cada override manual, con fuente y URL por campo, está en <a href="overrides.json" target="_blank">overrides.json</a> (mismo directorio que este archivo).</p>
         <div class="audit-wrap" style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
         <table class="audit">
-          <tr><th>Campo</th><th>Fuente</th><th>Detalle</th></tr>
-          <tr><td>PIB, inflación, deuda, desempleo, pobreza, Gini, homicidios</td><td>Banco Mundial API</td><td>fetch_colombia_kpis.py, 2026-06-18</td></tr>
-          <tr><td>Pobreza multidimensional (IPM)</td><td>DANE</td><td>anex-PMultidimensional-2025.xlsx, hoja IPM_Dominios, fila Nacional</td></tr>
-          <tr><td>Informalidad 2021–2025</td><td>DANE GEIH</td><td>anex-GEIHEISS-&hellip;.xlsx, hoja Grandes dominios, Total nacional, calculado mes a mes</td></tr>
-          <tr><td>Informalidad antes de 2021</td><td>— sin verificar —</td><td>requiere anexo GEIH marco 2005, dominio Total Nacional (no localizado aún)</td></tr>
-          <tr><td>Déficit fiscal (Colombia y región)</td><td>— sin datos —</td><td>GC.BAL.CASH.GD.ZS vacío en la API del Banco Mundial para Colombia</td></tr>
-          <tr><td>Inflación, Gini, pobreza, IPM — región</td><td>— sin datos —</td><td>sin agregado regional comparable en este pipeline</td></tr>
+          <tr><th>Campo</th><th>Fuente</th><th>Enlace directo</th></tr>
+          <tr><td>PIB, inflación, deuda, desempleo, pobreza, Gini, homicidios (serie general)</td><td>Banco Mundial API</td><td><code>fetch_colombia_kpis.py</code>, 2026-06-18 — sin URL única (consulta API)</td></tr>
+          <tr><td>Pobreza multidimensional (IPM), todos los periodos</td><td>DANE</td><td><a href="https://www.dane.gov.co/files/operaciones/PM/anex-PMultidimensional-2025.xlsx" target="_blank">anex-PMultidimensional-2025.xlsx</a>, hoja IPM_Dominios, fila Nacional</td></tr>
+          <tr><td>Informalidad, Duque (parcial, 2021–2022) y Petro (2023–2025)</td><td>DANE GEIH</td><td><a href="https://www.dane.gov.co/files/operaciones/GEIH/anex-GEIHEISS-oct-dic2025.xlsx" target="_blank">anex-GEIHEISS-oct-dic2025.xlsx</a>, hoja Grandes dominios, Total nacional</td></tr>
+          <tr><td>Informalidad antes de 2021</td><td>— pista abierta, no confirmada —</td><td><a href="https://www.dane.gov.co/files/investigaciones/boletines/ech/ech_informalidad/anexo_geih_informalidad_oct20_dic20.xls" target="_blank">anexo_geih_informalidad_oct20_dic20.xls</a> (URL probable por patrón; sí incluye dominio Total Nacional, pero la cifra titular de prensa para ese trimestre corresponde a 13 ciudades, no a Total Nacional — la celda exacta no se ha leído)</td></tr>
+          <tr><td>Déficit fiscal, Petro (5,8% promedio 2023–2025)</td><td>Ministerio de Hacienda</td><td><a href="https://www.minhacienda.gov.co/politica-fiscal/cifras-de-politica-fiscal/gobierno-nacional-central/balance/-/document_library/dgai/view/421881" target="_blank">Balance fiscal GNC — Ministerio de Hacienda</a></td></tr>
+          <tr><td>Déficit fiscal, los otros 7 periodos</td><td>— prototipo anterior, no reverificado —</td><td>sin URL — ver <a href="overrides.json" target="_blank">overrides.json</a> para el detalle</td></tr>
+          <tr><td>Homicidios, fin de periodo Petro (2025)</td><td>Medicina Legal / InSight Crime</td><td>Medicina Legal: sin URL pública estable · <a href="https://insightcrime.org/news/insight-crime-2025-homicide-round-up/" target="_blank">InSight Crime, 2025 Homicide Round-Up</a> (cifra alternativa, 25,8)</td></tr>
+          <tr><td>Inflación, Gini, pobreza, IPM — región (ALC)</td><td>— sin datos —</td><td>sin agregado regional comparable en este pipeline</td></tr>
         </table>
         </div>
         <ul>
           <li><strong>Calendario:</strong> los periodos corren de agosto a agosto; los promedios usan los años calendario completos dentro de cada periodo (p. ej., para 2002–2006, se promedian 2003–2006).</li>
-          <li><strong>Puntos compartidos entre periodos:</strong> cuando la serie del Banco Mundial no cubre el año exacto de inicio o fin de un periodo, el script usa el primer/último año disponible — por eso, p. ej., la pobreza monetaria de "fin de Uribe II" y "inicio de Santos I" son el mismo dato (2012, primer año con cifra nacional comparable), no una coincidencia.</li>
-          <li><strong>Ruptura GEIH 2021:</strong> ver el gráfico de informalidad — el rediseño metodológico del DANE (GEIH marco 2018) hace que los datos de 2021 en adelante no sean comparables con los anteriores; los periodos previos a Duque están vacíos por esa razón, no por simple falta de búsqueda.</li>
+          <li><strong>Puntos compartidos entre periodos:</strong> cuando la serie del Banco Mundial no cubre el año exacto de inicio o fin de un periodo, el script usa el primer/último año disponible — por eso, p. ej., la pobreza monetaria de "fin de Uribe II" y "inicio de Santos I" son el mismo dato (2012), no una coincidencia.</li>
+          <li><strong>Ruptura GEIH 2021:</strong> ver el gráfico de informalidad — el rediseño metodológico del DANE (GEIH marco 2018) hace que los datos de 2021 en adelante no sean directamente comparables con los anteriores.</li>
         </ul>
       </div>
       <div>
-        <p class="caveat">Todo campo marcado "s/d" en este panel está realmente sin dato verificado — no se completó con una estimación. Si necesita esas cifras (déficit fiscal por periodo, informalidad pre-2021, comparadores regionales de Gini/pobreza), tendrán que salir de Banco de la República / Ministerio de Hacienda / DANE microdatos antiguos, fuentes que este pipeline aún no consulta.</p>
-        <p style="margin-top:16px; font-weight:600; color:var(--ink);">Fuentes primarias recomendadas para completar lo pendiente</p>
+        <p class="caveat">Todo campo marcado "s/d" en este panel está realmente sin dato verificado — no se completó con una estimación. Los campos marcados *** tienen una fuente real pero fuera del pipeline del Banco Mundial — ver <a href="overrides.json" target="_blank">overrides.json</a> para el detalle exacto de cada uno, incluida la URL.</p>
+        <p style="margin-top:16px; font-weight:600; color:var(--ink);">Fuentes primarias, con enlace donde existe uno estable</p>
         <ul>
-          <li>DANE — GEIH marco 2005 (informalidad pre-2021), Cuentas Nacionales</li>
-          <li>Banco de la República — inflación histórica, deuda externa</li>
-          <li>Ministerio de Hacienda y Crédito Público — déficit fiscal del Gobierno Central por año</li>
+          <li>DANE — <a href="https://www.dane.gov.co/index.php/estadisticas-por-tema/mercado-laboral/empleo-informal-y-seguridad-social" target="_blank">Empleo informal y seguridad social</a>, Cuentas Nacionales, Pobreza Multidimensional</li>
+          <li>Banco de la República — inflación histórica, deuda externa (sin override en este archivo)</li>
+          <li>Ministerio de Hacienda y Crédito Público — <a href="https://www.minhacienda.gov.co/politica-fiscal/cifras-de-politica-fiscal/gobierno-nacional-central/balance/-/document_library/dgai/view/421881" target="_blank">Balance fiscal del Gobierno Nacional Central</a></li>
+          <li>Instituto Nacional de Medicina Legal y Ciencias Forenses — boletines de homicidios (sin URL pública estable por año)</li>
+          <li><a href="https://insightcrime.org/news/insight-crime-2025-homicide-round-up/" target="_blank">InSight Crime — 2025 Homicide Round-Up</a> (comparador metodológico para homicidios recientes)</li>
           <li>CEPAL / OIT — si se necesita un comparador regional de Gini, pobreza o informalidad (el Banco Mundial no publica uno limpio)</li>
         </ul>
       </div>
@@ -236,6 +246,8 @@
   <footer>
     <span>PIB/inflación/deuda/desempleo/pobreza/Gini/homicidios: Banco Mundial API, 2026-06-18 · IPM e informalidad: DANE, archivos citados arriba · Petro: periodo en curso, datos parciales</span>
     <span>Herramienta de orientación con procedencia de datos documentada — no es una publicación oficial</span>
+    <span><a href="https://github.com/alefunxo/COL_KPI" target="_blank">Herramienta de orientación documentada</a></span>
+    <span><a href="https://www.linkedin.com/in/alejandro-pena-bello/" target="_blank">Herramienta creada por Alejandro Peña Bello</a></span>
   </footer>
 
 </div>
@@ -311,7 +323,7 @@ const PRESIDENTS = [
     economy:{ gdpGrowth:1.16, inflation:9.17, fiscalDeficit:{ value:5.8, flag:true, note:"Promedio 2023–2025 (4,3% + 6,7% + 6,4% del PIB, Gobierno Nacional Central). Ministerio de Hacienda — el Banco Mundial no tiene cobertura de Colombia para este indicador." }, debtEnd:71.48 },
     employment:{ unemployment:9.17, informality:56.0 },
     social:{ povertyStart:36.6, povertyEnd:31.8, extremeStart:9.3, extremeEnd:8.5, gini:0.545, mpiEnd:9.9 },
-    security:{ homicideAvg:24.91, homicideEnd:{ value:25.8, flag:true, note:"Estimación de InSight Crime (base policial): 25,8." } },
+    security:{ homicideAvg:24.91, homicideEnd:{ value:27.9, flag:true, note:"Medicina Legal, 2025, cifra preliminar (14.780 casos). Fuente distinta a la serie UNODC/Banco Mundial del resto del gráfico — no es estrictamente comparable. Estimación alternativa de InSight Crime (base policial): 25,8." } },
     approval:{ start:{ value:50, flag:true, note:"Cifra aproximada, citada como referencia en Infobae (agosto 2025): 'sigue lejos del 50% con el que inició su mandato'. Encuesta Invamer agosto 2022." }, end:{ value:37, flag:true, note:"Aprobación más reciente disponible (agosto 2025, Invamer para Caracol/Blu Radio) — gobierno en curso hasta agosto 2026; no es el dato de fin de mandato." } },
     note:"Primer gobierno de izquierda; inflación post-pandemia alta cede gradualmente.",
     ongoing:true }
@@ -509,7 +521,7 @@ function renderInformalityChart(container, opts){
   list.forEach(function(p, idx){
     let raw = getPath(p, opts.key);
     const isPartial = raw && typeof raw==='object' && raw.partial;
-    const v = isPartial ? raw.value : raw;
+    const v = valueOf(raw);
     const col = document.createElement('div');
     col.className = 'col';
 
@@ -545,6 +557,7 @@ function renderGroupedChart(container, opts){
   const endLabel = opts.endLabel || 'Fin';
   const list = activePresidents();
   const card = cardSkeleton(container, opts.title, opts.unit, opts.source, opts.flag);
+  card.classList.add('wide');
   const anyRegion = list.some(function(p){
     const r=REGION_BY_PERIOD[p.id];
     return r && (getPath(r,opts.keyStart)!==null || getPath(r,opts.keyEnd)!==null);
@@ -574,10 +587,10 @@ function renderGroupedChart(container, opts){
       const v = pair[1];
       const flagged = pair[4];
       if(v===null || v===undefined){
-        subcol.innerHTML = '<span class="val muted" style="font-size:9px;">s/d</span><div class="bar dashed"></div>';
+        subcol.innerHTML = '<span class="val muted">s/d</span><div class="bar dashed"></div>';
       } else {
         const pct = max>0 ? Math.max((v/max*100), 2) : 2;
-        subcol.innerHTML = '<span class="val" style="font-size:9.5px;">'+fmt(v, opts.decimals)+(flagged?'***':'')+'</span>'+
+        subcol.innerHTML = '<span class="val">'+fmt(v, opts.decimals)+(flagged?'***':'')+'</span>'+
                             '<div class="bar'+(flagged?' partial':'')+'" data-pct="'+pct+'" style="background:'+pair[2]+'"></div>';
         subcol.title = fullLabel(p)+' ('+pair[0]+'): '+fmt(v, opts.decimals)+opts.suffix+(flagged?' — '+pair[5]:(p.povertyEndNote && pair[0]===endLabel && opts.keyEnd==='social.povertyEnd' ? ' — '+p.povertyEndNote : ''));
       }
@@ -616,21 +629,21 @@ function renderTab(tabId){
   if(tabId==='economy'){
     renderSingleChart(grid, {title:'Crecimiento del PIB, promedio anual', unit:'% anual, precios constantes', source:'Fuente: Banco Mundial API (NY.GDP.MKTP.KD.ZG), fetch_colombia_kpis.py, 2026-06-18', key:'economy.gdpGrowth', suffix:'%', decimals:1});
     renderSingleChart(grid, {title:'Inflación, promedio anual', unit:'% anual, IPC', source:'Fuente: Banco Mundial API (FP.CPI.TOTL.ZG), fetch_colombia_kpis.py — agregado regional sin cobertura', key:'economy.inflation', suffix:'%', decimals:1});
-    renderSingleChart(grid, {title:'Déficit fiscal, promedio', unit:'% del PIB, Gobierno Central', source:'Banco Mundial API (GC.BAL.CASH.GD.ZS): sin cobertura para Colombia. *** Petro: promedio 2023–2025 verificado en MinHacienda (ver tooltip). Gaviria: s/d. Demás periodos: del prototipo anterior (MinHacienda/carga manual, no verificados en esta sesión) — ver tooltips.', key:'economy.fiscalDeficit', suffix:'%', decimals:1, flag:true});
+    renderSingleChart(grid, {title:'Déficit fiscal, promedio', unit:'% del PIB, Gobierno Central', source:'Banco Mundial API (GC.BAL.CASH.GD.ZS): sin cobertura para Colombia. *** Petro: promedio 2023–2025, <a href="https://www.minhacienda.gov.co/politica-fiscal/cifras-de-politica-fiscal/gobierno-nacional-central/balance/-/document_library/dgai/view/421881" target="_blank">Ministerio de Hacienda — Balance fiscal GNC</a>. Gaviria: s/d. Demás periodos: prototipo anterior, no reverificado — ver <a href="overrides.json" target="_blank">overrides.json</a>.', key:'economy.fiscalDeficit', suffix:'%', decimals:1, flag:true});
     renderSingleChart(grid, {title:'Deuda pública bruta, fin de periodo', unit:'% del PIB', source:'Fuente: Banco Mundial API (GC.DOD.TOTL.GD.ZS) — algunos años usan el dato disponible más cercano, no el año exacto de fin de mandato', key:'economy.debtEnd', suffix:'%', decimals:0});
   }
   if(tabId==='employment'){
     renderSingleChart(grid, {title:'Tasa de desempleo, promedio', unit:'% de la fuerza laboral', source:'Fuente: Banco Mundial API (SL.UEM.TOTL.ZS, estimación modelada OIT)', key:'employment.unemployment', suffix:'%', decimals:1});
-    renderInformalityChart(grid, {title:'Informalidad laboral, promedio', unit:'% de los ocupados — dominio Total Nacional', source:'Fuente: DANE GEIH, hoja Grandes dominios (2021–2025, calculado en esta sesión). Sin agregado regional comparable.', key:'employment.informality', suffix:'%', decimals:0});
+    renderInformalityChart(grid, {title:'Informalidad laboral, promedio', unit:'% de los ocupados — dominio Total Nacional', source:'Fuente: DANE GEIH, <a href="https://www.dane.gov.co/files/operaciones/GEIH/anex-GEIHEISS-oct-dic2025.xlsx" target="_blank">anex-GEIHEISS-oct-dic2025.xlsx</a>, hoja Grandes dominios (2021–2025, calculado en esta sesión). Sin agregado regional comparable.', key:'employment.informality', suffix:'%', decimals:0});
   }
   if(tabId==='social'){
     renderGroupedChart(grid, {title:'Pobreza monetaria', unit:'% de la población — inicio vs. fin de periodo', source:'Fuente: Banco Mundial API (SI.POV.NAHC). Ver nota sobre puntos compartidos entre periodos en la sección de procedencia.', keyStart:'social.povertyStart', keyEnd:'social.povertyEnd', suffix:'%', decimals:1});
     renderGroupedChart(grid, {title:'Pobreza extrema', unit:'% de la población — inicio vs. fin de periodo', source:'Fuente: Banco Mundial API (SI.POV.DDAY, línea internacional de USD 2.15/día)', keyStart:'social.extremeStart', keyEnd:'social.extremeEnd', suffix:'%', decimals:1});
     renderSingleChart(grid, {title:'Coeficiente de Gini, promedio', unit:'0 = igualdad perfecta, 1 = máxima desigualdad', source:'Fuente: Banco Mundial API (SI.POV.GINI) — agregado regional sin cobertura', key:'social.gini', suffix:'', decimals:3});
-    renderSingleChart(grid, {title:'Pobreza multidimensional (IPM), fin de periodo', unit:'% de la población — serie disponible desde 2010', source:'Fuente: DANE, anex-PMultidimensional-2025.xlsx, hoja IPM_Dominios, fila Nacional. Sin comparador regional homologado.', key:'social.mpiEnd', suffix:'%', decimals:1});
+    renderSingleChart(grid, {title:'Pobreza multidimensional (IPM), fin de periodo', unit:'% de la población — serie disponible desde 2010', source:'Fuente: DANE, <a href="https://www.dane.gov.co/files/operaciones/PM/anex-PMultidimensional-2025.xlsx" target="_blank">anex-PMultidimensional-2025.xlsx</a>, hoja IPM_Dominios, fila Nacional. Sin comparador regional homologado.', key:'social.mpiEnd', suffix:'%', decimals:1});
   }
   if(tabId==='security'){
-    renderGroupedChart(grid, {title:'Tasa de homicidios', unit:'por 100.000 habitantes — promedio del periodo vs. fin de periodo', source:'Banco Mundial API (VC.IHR.PSRC.P5, fuente UNODC). *** Petro, fin de periodo: Medicina Legal 2025 (preliminar) — fuente distinta, ver tooltip; el dato UNODC/Banco Mundial para 2025-2026 aún no está disponible.', keyStart:'security.homicideAvg', keyEnd:'security.homicideEnd', suffix:'', decimals:0, startLabel:'Promedio del periodo', endLabel:'Fin de periodo'});
+    renderGroupedChart(grid, {title:'Tasa de homicidios', unit:'por 100.000 habitantes — promedio del periodo vs. fin de periodo', source:'Banco Mundial API (VC.IHR.PSRC.P5, fuente UNODC). *** Petro, fin de periodo: Medicina Legal 2025 (preliminar); cifra alternativa de <a href="https://insightcrime.org/news/insight-crime-2025-homicide-round-up/" target="_blank">InSight Crime, 2025 Homicide Round-Up</a> (25,8, base policial). El dato UNODC/Banco Mundial para 2025-2026 aún no está disponible.', keyStart:'security.homicideAvg', keyEnd:'security.homicideEnd', suffix:'', decimals:0, startLabel:'Promedio del periodo', endLabel:'Fin de periodo'});
   }
   if(tabId==='approval'){
     renderGroupedChart(grid, {title:'Aprobación presidencial', unit:'% de aprobación — inicio vs. fin de mandato (Invamer Poll bimensual)', source:'Fuente: Invamer (antes Invamer Gallup). Gaviria/Samper/Pastrana: solo cifras de fin de mandato, citadas por el gerente de Gallup Colombia (El Colombiano, 6 ago 2010); datos de inicio no digitalizados. Santos I fin (ago 2014) y Santos II inicio: no localizados en fuentes online. *** Uribe II fin: discrepancia entre El Tiempo (75%) y El País (80%) — se usa la serie bimensual continua. *** Petro inicio: cifra aprox. citada por Infobae (ago 2025). *** Petro fin: aprobación más reciente (ago 2025), gobierno en curso.', keyStart:'approval.start', keyEnd:'approval.end', suffix:'%', decimals:0, startLabel:'Inicio de mandato', endLabel:'Fin de mandato', fixedMax:100, flag:true});

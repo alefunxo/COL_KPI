@@ -1,0 +1,1203 @@
+{
+  "country": {
+    "gaviria": {
+      "name": "César Gaviria",
+      "start": 1990,
+      "end": 1994,
+      "gdpGrowth": {
+        "termAverage": 4.31,
+        "startYear": 1990,
+        "startValue": 4.28199833053058,
+        "endYear": 1994,
+        "endValue": 5.81466190724336
+      },
+      "inflation": {
+        "termAverage": 25.67,
+        "startYear": 1990,
+        "startValue": 29.1520245976215,
+        "endYear": 1994,
+        "endValue": 22.8462417553044
+      },
+      "fiscalBalance": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "govDebt": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "unemployment": {
+        "termAverage": 8.9,
+        "startYear": 1991,
+        "startValue": 10.12,
+        "endYear": 1994,
+        "endValue": 8.25
+      },
+      "gini": {
+        "termAverage": 51.3,
+        "startYear": 1989,
+        "startValue": 52.8,
+        "endYear": 1992,
+        "endValue": 51.3
+      },
+      "povertyNational": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "extremePovertyIntl": {
+        "termAverage": 17.65,
+        "startYear": 1989,
+        "startValue": 21.3,
+        "endYear": 1992,
+        "endValue": 16.0
+      },
+      "homicideRate": {
+        "termAverage": 82.26,
+        "startYear": 1990,
+        "startValue": 74.9998416310372,
+        "endYear": 1994,
+        "endValue": 77.0879503653693
+      }
+    },
+    "samper": {
+      "name": "Ernesto Samper",
+      "start": 1994,
+      "end": 1998,
+      "gdpGrowth": {
+        "termAverage": 2.81,
+        "startYear": 1994,
+        "startValue": 5.81466190724336,
+        "endYear": 1998,
+        "endValue": 0.569784088434517
+      },
+      "inflation": {
+        "termAverage": 19.71,
+        "startYear": 1994,
+        "startValue": 22.8462417553044,
+        "endYear": 1998,
+        "endValue": 18.6769799276671
+      },
+      "fiscalBalance": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "govDebt": {
+        "termAverage": 5.4,
+        "startYear": null,
+        "startValue": null,
+        "endYear": 1998,
+        "endValue": 5.40391549112143
+      },
+      "unemployment": {
+        "termAverage": 11.92,
+        "startYear": 1994,
+        "startValue": 8.25,
+        "endYear": 1998,
+        "endValue": 15.0
+      },
+      "gini": {
+        "termAverage": 56.8,
+        "startYear": 1992,
+        "startValue": 51.3,
+        "endYear": 1999,
+        "endValue": 58.5
+      },
+      "povertyNational": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "extremePovertyIntl": {
+        "termAverage": 24.8,
+        "startYear": 1992,
+        "startValue": 16.0,
+        "endYear": 1999,
+        "endValue": 28.2
+      },
+      "homicideRate": {
+        "termAverage": 62.49,
+        "startYear": 1994,
+        "startValue": 77.0879503653693,
+        "endYear": 1998,
+        "endValue": 61.0946739886429
+      }
+    },
+    "pastrana": {
+      "name": "Andrés Pastrana",
+      "start": 1998,
+      "end": 2002,
+      "gdpGrowth": {
+        "termAverage": 0.73,
+        "startYear": 1998,
+        "startValue": 0.569784088434517,
+        "endYear": 2002,
+        "endValue": 2.50398046659659
+      },
+      "inflation": {
+        "termAverage": 8.6,
+        "startYear": 1998,
+        "startValue": 18.6769799276671,
+        "endYear": 2002,
+        "endValue": 6.35150728778872
+      },
+      "fiscalBalance": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "govDebt": {
+        "termAverage": 18.39,
+        "startYear": 1998,
+        "startValue": 5.40391549112143,
+        "endYear": 2003,
+        "endValue": 52.535419533379
+      },
+      "unemployment": {
+        "termAverage": 17.53,
+        "startYear": 1998,
+        "startValue": 15.0,
+        "endYear": 2002,
+        "endValue": 14.481
+      },
+      "gini": {
+        "termAverage": 57.55,
+        "startYear": 1999,
+        "startValue": 58.5,
+        "endYear": 2002,
+        "endValue": 56.0
+      },
+      "povertyNational": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "extremePovertyIntl": {
+        "termAverage": 25.72,
+        "startYear": 1999,
+        "startValue": 28.2,
+        "endYear": 2002,
+        "endValue": 21.2
+      },
+      "homicideRate": {
+        "termAverage": 67.93,
+        "startYear": 1998,
+        "startValue": 61.0946739886429,
+        "endYear": 2002,
+        "endValue": 70.3960948977152
+      }
+    },
+    "uribe1": {
+      "name": "Álvaro Uribe (1er mandato)",
+      "start": 2002,
+      "end": 2006,
+      "gdpGrowth": {
+        "termAverage": 5.2,
+        "startYear": 2002,
+        "startValue": 2.50398046659659,
+        "endYear": 2006,
+        "endValue": 6.71686869844402
+      },
+      "inflation": {
+        "termAverage": 5.59,
+        "startYear": 2002,
+        "startValue": 6.35150728778872,
+        "endYear": 2006,
+        "endValue": 4.29342363628926
+      },
+      "fiscalBalance": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "govDebt": {
+        "termAverage": 52.54,
+        "startYear": 2003,
+        "startValue": 52.535419533379,
+        "endYear": 2008,
+        "endValue": 65.2450803056946
+      },
+      "unemployment": {
+        "termAverage": 12.27,
+        "startYear": 2002,
+        "startValue": 14.481,
+        "endYear": 2006,
+        "endValue": 11.088
+      },
+      "gini": {
+        "termAverage": 54.17,
+        "startYear": 2002,
+        "startValue": 56.0,
+        "endYear": 2005,
+        "endValue": 53.9
+      },
+      "povertyNational": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "extremePovertyIntl": {
+        "termAverage": 18.6,
+        "startYear": 2002,
+        "startValue": 21.2,
+        "endYear": 2005,
+        "endValue": 16.8
+      },
+      "homicideRate": {
+        "termAverage": 47.51,
+        "startYear": 2002,
+        "startValue": 70.3960948977152,
+        "endYear": 2006,
+        "endValue": 40.9429758324124
+      }
+    },
+    "uribe2": {
+      "name": "Álvaro Uribe (2do mandato)",
+      "start": 2006,
+      "end": 2010,
+      "gdpGrowth": {
+        "termAverage": 3.91,
+        "startYear": 2006,
+        "startValue": 6.71686869844402,
+        "endYear": 2010,
+        "endValue": 4.49465897070922
+      },
+      "inflation": {
+        "termAverage": 4.75,
+        "startYear": 2006,
+        "startValue": 4.29342363628926,
+        "endYear": 2010,
+        "endValue": 2.27200227892008
+      },
+      "fiscalBalance": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "govDebt": {
+        "termAverage": 68.9,
+        "startYear": 2008,
+        "startValue": 65.2450803056946,
+        "endYear": 2010,
+        "endValue": 72.4526699261111
+      },
+      "unemployment": {
+        "termAverage": 11.42,
+        "startYear": 2006,
+        "startValue": 11.088,
+        "endYear": 2010,
+        "endValue": 11.153
+      },
+      "gini": {
+        "termAverage": 54.5,
+        "startYear": 2005,
+        "startValue": 53.9,
+        "endYear": 2010,
+        "endValue": 54.4
+      },
+      "povertyNational": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": 2012,
+        "endValue": 41.0
+      },
+      "extremePovertyIntl": {
+        "termAverage": 14.9,
+        "startYear": 2005,
+        "startValue": 16.8,
+        "endYear": 2010,
+        "endValue": 13.3
+      },
+      "homicideRate": {
+        "termAverage": 36.73,
+        "startYear": 2006,
+        "startValue": 40.9429758324124,
+        "endYear": 2010,
+        "endValue": 34.5241750628259
+      }
+    },
+    "santos1": {
+      "name": "Juan Manuel Santos (1er mandato)",
+      "start": 2010,
+      "end": 2014,
+      "gdpGrowth": {
+        "termAverage": 5.12,
+        "startYear": 2010,
+        "startValue": 4.49465897070922,
+        "endYear": 2014,
+        "endValue": 4.49903000110972
+      },
+      "inflation": {
+        "termAverage": 2.88,
+        "startYear": 2010,
+        "startValue": 2.27200227892008,
+        "endYear": 2014,
+        "endValue": 2.89883787761737
+      },
+      "fiscalBalance": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "govDebt": {
+        "termAverage": 60.79,
+        "startYear": 2010,
+        "startValue": 72.4526699261111,
+        "endYear": 2014,
+        "endValue": 47.9761695160459
+      },
+      "unemployment": {
+        "termAverage": 9.57,
+        "startYear": 2010,
+        "startValue": 11.153,
+        "endYear": 2014,
+        "endValue": 8.799
+      },
+      "gini": {
+        "termAverage": 53.5,
+        "startYear": 2010,
+        "startValue": 54.4,
+        "endYear": 2014,
+        "endValue": 53.6
+      },
+      "povertyNational": {
+        "termAverage": 38.9,
+        "startYear": 2012,
+        "startValue": 41.0,
+        "endYear": 2014,
+        "endValue": 37.0
+      },
+      "extremePovertyIntl": {
+        "termAverage": 11.67,
+        "startYear": 2010,
+        "startValue": 13.3,
+        "endYear": 2014,
+        "endValue": 10.9
+      },
+      "homicideRate": {
+        "termAverage": 33.42,
+        "startYear": 2010,
+        "startValue": 34.5241750628259,
+        "endYear": 2014,
+        "endValue": 28.654305199833
+      }
+    },
+    "santos2": {
+      "name": "Juan Manuel Santos (2do mandato)",
+      "start": 2014,
+      "end": 2018,
+      "gdpGrowth": {
+        "termAverage": 2.24,
+        "startYear": 2014,
+        "startValue": 4.49903000110972,
+        "endYear": 2018,
+        "endValue": 2.56432428277704
+      },
+      "inflation": {
+        "termAverage": 5.01,
+        "startYear": 2014,
+        "startValue": 2.89883787761737,
+        "endYear": 2018,
+        "endValue": 3.24056932930569
+      },
+      "fiscalBalance": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "govDebt": {
+        "termAverage": 64.64,
+        "startYear": 2014,
+        "startValue": 47.9761695160459,
+        "endYear": 2018,
+        "endValue": 71.6505702481056
+      },
+      "unemployment": {
+        "termAverage": 8.98,
+        "startYear": 2014,
+        "startValue": 8.799,
+        "endYear": 2018,
+        "endValue": 9.36
+      },
+      "gini": {
+        "termAverage": 51.55,
+        "startYear": 2014,
+        "startValue": 53.6,
+        "endYear": 2018,
+        "endValue": 51.6
+      },
+      "povertyNational": {
+        "termAverage": 36.25,
+        "startYear": 2014,
+        "startValue": 37.0,
+        "endYear": 2018,
+        "endValue": 35.5
+      },
+      "extremePovertyIntl": {
+        "termAverage": 9.9,
+        "startYear": 2014,
+        "startValue": 10.9,
+        "endYear": 2018,
+        "endValue": 9.8
+      },
+      "homicideRate": {
+        "termAverage": 25.68,
+        "startYear": 2014,
+        "startValue": 28.654305199833,
+        "endYear": 2018,
+        "endValue": 23.8207594532571
+      }
+    },
+    "duque": {
+      "name": "Iván Duque",
+      "start": 2018,
+      "end": 2022,
+      "gdpGrowth": {
+        "termAverage": 3.53,
+        "startYear": 2018,
+        "startValue": 2.56432428277704,
+        "endYear": 2022,
+        "endValue": 7.32827729427979
+      },
+      "inflation": {
+        "termAverage": 4.93,
+        "startYear": 2018,
+        "startValue": 3.24056932930569,
+        "endYear": 2022,
+        "endValue": 10.1772313546166
+      },
+      "fiscalBalance": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "govDebt": {
+        "termAverage": 78.64,
+        "startYear": 2018,
+        "startValue": 71.6505702481056,
+        "endYear": 2022,
+        "endValue": 70.2611599864283
+      },
+      "unemployment": {
+        "termAverage": 12.68,
+        "startYear": 2018,
+        "startValue": 9.36,
+        "endYear": 2022,
+        "endValue": 10.541
+      },
+      "gini": {
+        "termAverage": 54.2,
+        "startYear": 2018,
+        "startValue": 51.6,
+        "endYear": 2022,
+        "endValue": 54.8
+      },
+      "povertyNational": {
+        "termAverage": 38.98,
+        "startYear": 2018,
+        "startValue": 35.5,
+        "endYear": 2022,
+        "endValue": 36.6
+      },
+      "extremePovertyIntl": {
+        "termAverage": 11.9,
+        "startYear": 2018,
+        "startValue": 9.8,
+        "endYear": 2022,
+        "endValue": 9.3
+      },
+      "homicideRate": {
+        "termAverage": 24.14,
+        "startYear": 2018,
+        "startValue": 23.8207594532571,
+        "endYear": 2022,
+        "endValue": 24.9488076386337
+      }
+    },
+    "petro": {
+      "name": "Gustavo Petro",
+      "start": 2022,
+      "end": 2026,
+      "gdpGrowth": {
+        "termAverage": 1.16,
+        "startYear": 2022,
+        "startValue": 7.32827729427979,
+        "endYear": 2024,
+        "endValue": 1.5983315366523
+      },
+      "inflation": {
+        "termAverage": 9.17,
+        "startYear": 2022,
+        "startValue": 10.1772313546166,
+        "endYear": 2024,
+        "endValue": 6.60908593728228
+      },
+      "fiscalBalance": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "govDebt": {
+        "termAverage": 71.41,
+        "startYear": 2022,
+        "startValue": 70.2611599864283,
+        "endYear": 2024,
+        "endValue": 71.4831261616001
+      },
+      "unemployment": {
+        "termAverage": 9.17,
+        "startYear": 2022,
+        "startValue": 10.541,
+        "endYear": 2025,
+        "endValue": 8.29
+      },
+      "gini": {
+        "termAverage": 54.5,
+        "startYear": 2022,
+        "startValue": 54.8,
+        "endYear": 2024,
+        "endValue": 54.4
+      },
+      "povertyNational": {
+        "termAverage": 33.2,
+        "startYear": 2022,
+        "startValue": 36.6,
+        "endYear": 2024,
+        "endValue": 31.8
+      },
+      "extremePovertyIntl": {
+        "termAverage": 8.55,
+        "startYear": 2022,
+        "startValue": 9.3,
+        "endYear": 2024,
+        "endValue": 8.5
+      },
+      "homicideRate": {
+        "termAverage": 24.91,
+        "startYear": 2022,
+        "startValue": 24.9488076386337,
+        "endYear": null,
+        "endValue": null
+      }
+    }
+  },
+  "region_matched": {
+    "gaviria": {
+      "gdpGrowth": {
+        "termAverage": 3.79,
+        "startYear": 1990,
+        "startValue": -0.180493255751671,
+        "endYear": 1994,
+        "endValue": 5.03830780045537
+      },
+      "inflation": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "fiscalBalance": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "govDebt": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "unemployment": {
+        "termAverage": 6.34,
+        "startYear": 1991,
+        "startValue": 6.30995748550306,
+        "endYear": 1994,
+        "endValue": 6.67780065279213
+      },
+      "gini": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "povertyNational": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "extremePovertyIntl": {
+        "termAverage": 19.98,
+        "startYear": 1990,
+        "startValue": 20.7,
+        "endYear": 1994,
+        "endValue": 19.5
+      },
+      "homicideRate": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      }
+    },
+    "samper": {
+      "gdpGrowth": {
+        "termAverage": 3.31,
+        "startYear": 1994,
+        "startValue": 5.03830780045537,
+        "endYear": 1998,
+        "endValue": 2.92627853235039
+      },
+      "inflation": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "fiscalBalance": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "govDebt": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "unemployment": {
+        "termAverage": 8.21,
+        "startYear": 1994,
+        "startValue": 6.67780065279213,
+        "endYear": 1998,
+        "endValue": 8.48626182410088
+      },
+      "gini": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "povertyNational": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "extremePovertyIntl": {
+        "termAverage": 19.25,
+        "startYear": 1994,
+        "startValue": 19.5,
+        "endYear": 1998,
+        "endValue": 19.2
+      },
+      "homicideRate": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      }
+    },
+    "pastrana": {
+      "gdpGrowth": {
+        "termAverage": 1.23,
+        "startYear": 1998,
+        "startValue": 2.92627853235039,
+        "endYear": 2002,
+        "endValue": 0.214244416059572
+      },
+      "inflation": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "fiscalBalance": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "govDebt": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "unemployment": {
+        "termAverage": 9.33,
+        "startYear": 1998,
+        "startValue": 8.48626182410088,
+        "endYear": 2002,
+        "endValue": 9.38790662648606
+      },
+      "gini": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "povertyNational": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "extremePovertyIntl": {
+        "termAverage": 18.15,
+        "startYear": 1998,
+        "startValue": 19.2,
+        "endYear": 2002,
+        "endValue": 17.1
+      },
+      "homicideRate": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      }
+    },
+    "uribe1": {
+      "gdpGrowth": {
+        "termAverage": 4.32,
+        "startYear": 2002,
+        "startValue": 0.214244416059572,
+        "endYear": 2006,
+        "endValue": 5.26178937397808
+      },
+      "inflation": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "fiscalBalance": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "govDebt": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "unemployment": {
+        "termAverage": 8.46,
+        "startYear": 2002,
+        "startValue": 9.38790662648606,
+        "endYear": 2006,
+        "endValue": 7.61413600233204
+      },
+      "gini": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "povertyNational": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "extremePovertyIntl": {
+        "termAverage": 14.53,
+        "startYear": 2002,
+        "startValue": 17.1,
+        "endYear": 2006,
+        "endValue": 12.0
+      },
+      "homicideRate": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      }
+    },
+    "uribe2": {
+      "gdpGrowth": {
+        "termAverage": 3.21,
+        "startYear": 2006,
+        "startValue": 5.26178937397808,
+        "endYear": 2010,
+        "endValue": 6.16268521254158
+      },
+      "inflation": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "fiscalBalance": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "govDebt": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "unemployment": {
+        "termAverage": 7.27,
+        "startYear": 2006,
+        "startValue": 7.61413600233204,
+        "endYear": 2010,
+        "endValue": 7.21826756521545
+      },
+      "gini": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "povertyNational": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "extremePovertyIntl": {
+        "termAverage": 9.68,
+        "startYear": 2006,
+        "startValue": 12.0,
+        "endYear": 2010,
+        "endValue": 8.5
+      },
+      "homicideRate": {
+        "termAverage": 23.9,
+        "startYear": null,
+        "startValue": null,
+        "endYear": 2010,
+        "endValue": 23.9
+      }
+    },
+    "santos1": {
+      "gdpGrowth": {
+        "termAverage": 2.74,
+        "startYear": 2010,
+        "startValue": 6.16268521254158,
+        "endYear": 2014,
+        "endValue": 1.19550821220655
+      },
+      "inflation": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "fiscalBalance": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "govDebt": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "unemployment": {
+        "termAverage": 6.42,
+        "startYear": 2010,
+        "startValue": 7.21826756521545,
+        "endYear": 2014,
+        "endValue": 6.18310613899891
+      },
+      "gini": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "povertyNational": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "extremePovertyIntl": {
+        "termAverage": 7.12,
+        "startYear": 2010,
+        "startValue": 8.5,
+        "endYear": 2014,
+        "endValue": 6.5
+      },
+      "homicideRate": {
+        "termAverage": 24.0,
+        "startYear": 2010,
+        "startValue": 23.9,
+        "endYear": 2014,
+        "endValue": 23.4
+      }
+    },
+    "santos2": {
+      "gdpGrowth": {
+        "termAverage": 0.57,
+        "startYear": 2014,
+        "startValue": 1.19550821220655,
+        "endYear": 2018,
+        "endValue": 1.21791319664719
+      },
+      "inflation": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "fiscalBalance": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "govDebt": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": 2019,
+        "endValue": 70.688431943751
+      },
+      "unemployment": {
+        "termAverage": 7.59,
+        "startYear": 2014,
+        "startValue": 6.18310613899891,
+        "endYear": 2018,
+        "endValue": 7.93331984460849
+      },
+      "gini": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "povertyNational": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "extremePovertyIntl": {
+        "termAverage": 6.12,
+        "startYear": 2014,
+        "startValue": 6.5,
+        "endYear": 2018,
+        "endValue": 6.1
+      },
+      "homicideRate": {
+        "termAverage": 23.38,
+        "startYear": 2014,
+        "startValue": 23.4,
+        "endYear": 2018,
+        "endValue": 23.1
+      }
+    },
+    "duque": {
+      "gdpGrowth": {
+        "termAverage": 1.15,
+        "startYear": 2018,
+        "startValue": 1.21791319664719,
+        "endYear": 2022,
+        "endValue": 4.08489707535257
+      },
+      "inflation": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "fiscalBalance": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "govDebt": {
+        "termAverage": 72.49,
+        "startYear": 2019,
+        "startValue": 70.688431943751,
+        "endYear": 2021,
+        "endValue": 69.1122409234521
+      },
+      "unemployment": {
+        "termAverage": 8.57,
+        "startYear": 2018,
+        "startValue": 7.93331984460849,
+        "endYear": 2022,
+        "endValue": 6.93153209123053
+      },
+      "gini": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "povertyNational": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "extremePovertyIntl": {
+        "termAverage": 5.8,
+        "startYear": 2018,
+        "startValue": 6.1,
+        "endYear": 2022,
+        "endValue": 5.0
+      },
+      "homicideRate": {
+        "termAverage": 20.45,
+        "startYear": 2018,
+        "startValue": 23.1,
+        "endYear": 2022,
+        "endValue": 20.0
+      }
+    },
+    "petro": {
+      "gdpGrowth": {
+        "termAverage": 2.25,
+        "startYear": 2022,
+        "startValue": 4.08489707535257,
+        "endYear": 2024,
+        "endValue": 2.25365117533329
+      },
+      "inflation": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "fiscalBalance": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "govDebt": {
+        "termAverage": null,
+        "startYear": 2021,
+        "startValue": 69.1122409234521,
+        "endYear": null,
+        "endValue": null
+      },
+      "unemployment": {
+        "termAverage": 5.84,
+        "startYear": 2022,
+        "startValue": 6.93153209123053,
+        "endYear": 2025,
+        "endValue": 5.45906708114628
+      },
+      "gini": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "povertyNational": {
+        "termAverage": null,
+        "startYear": null,
+        "startValue": null,
+        "endYear": null,
+        "endValue": null
+      },
+      "extremePovertyIntl": {
+        "termAverage": 4.45,
+        "startYear": 2022,
+        "startValue": 5.0,
+        "endYear": 2024,
+        "endValue": 4.3
+      },
+      "homicideRate": {
+        "termAverage": 19.7,
+        "startYear": 2022,
+        "startValue": 20.0,
+        "endYear": null,
+        "endValue": null
+      }
+    }
+  }
+}
